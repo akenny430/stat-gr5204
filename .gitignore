@@ -1,0 +1,15 @@
+# basic files
+.DS_store
+
+# auxiliary latex files
+*.aux
+*.lof
+*.log
+*.lot
+*.fls
+*.out
+*.toc
+*.fdb_latexmk
+*.synctex.gz
+*.nav
+*.snm
