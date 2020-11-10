@@ -37,6 +37,22 @@
 
 %' ============================================================================================================================================================
 \section{Question 1} \noindent
+When rolling two dice, there are six possible ways for their total to sum up to seven: \((1,6)\), \((2,5)\), \((3,4)\), \((4,3)\), \((5,2)\), and \((6,1)\), 
+so the probability of the sum being seven is \(6 / 36 = 1 / 6\). If \(X\) is the number of trials where the total of both rolls is seven, then we can think 
+of \(X \sim \mathrm{Bin}(120, 1/6)\), and so \(\mathbb{E}X = 20\) and \(\mathrm{Var}X = 50 / 3\). 
+% Then the random variable 
+% \(Z = \frac{X - 20}{\sqrt{5/36}} \sim \mathrm{N}(0, 1)\)
+% Note then that \(\sqrt{\mathrm{Var}X / n} = \sqrt{5}/6\).
+Using the Central Limit Theorem, we then have 
+\begin{align*}
+    \mathrm{Pr}\big( |X - 20| \le k \big)
+    = \mathrm{Pr} \left( \left| \frac{X - 20}{\sqrt{50/3}} \right| \le k \sqrt{\frac{3}{50}} \right)
+    = 2 \Phi \left( k \sqrt{\frac{3}{50}} \right) - 1
+    \overset{\text{set}}{=} 0.95
+    ~~\Longrightarrow~~ \Phi \left( k \sqrt{\frac{3}{50}} \right) = 0.975.
+\end{align*}
+Using a table of values for \(\Phi(z)\), we can see that \(k \sqrt{3 / 50} = 1.96\), and so \(k = 1.96 \sqrt{50/3} \approx 8\).
+
 
 
 \end{document}
