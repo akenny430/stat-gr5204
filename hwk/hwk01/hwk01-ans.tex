@@ -53,6 +53,37 @@ Using the Central Limit Theorem, we then have
 \end{align*}
 Using a table of values for \(\Phi(z)\), we can see that \(k \sqrt{3 / 50} = 1.96\), and so \(k = 1.96 \sqrt{50/3} \approx 8\).
 
+%' ============================================================================================================================================================
+\section{Question 2} \noindent
+Let \(X \sim \mathrm{Pois}(10)\), and so \(\mathbb{E}X = \mathrm{Var}X = 10\). Using the CLT without any continuity correction, we have 
+\((X - 10)/\sqrt{10} \approx \mathrm{N}(0,1)\), and so 
+\begin{align*}
+    \mathrm{Pr}(8 \le X \le 12)
+    % = \mathrm{Pr} \left( \frac{8 - 10}{\sqrt{10}} \le \frac{X - 10}{\sqrt{10}} \le \frac{12 - 10}{\sqrt{10}} \right)
+    = \mathrm{Pr} \left( \frac{8 - 10}{\sqrt{10}} \le Z \le \frac{12 - 10}{\sqrt{10}} \right)
+    % = \mathrm{Pr} \big(- \sqrt{2 / 5} \le Z \le \sqrt{2 / 5} \big) \\
+    = \mathrm{Pr} \big( |Z| \le \sqrt{2/5} \big) 
+    % &\approx \Phi \big( \sqrt{2/5} \big) - \Phi \big( -\sqrt{2/5} \big)
+    \approx 2 \Phi \big( \sqrt{2/5} \big) - 1 
+    = 0.4714.
+\end{align*}
+If we do use continuity correction, then we have 
+\begin{align*}
+    \mathrm{Pr}(8 \le X \le 12)
+    &\approx \mathrm{Pr}(7.5 \le X \le 12.5) \\
+    &= \mathrm{Pr} \left( \frac{7.5 - 10}{\sqrt{10}} \le Z \le \frac{12.5 - 10}{\sqrt{10}} \right)
+    = \mathrm{Pr} \big( |Z| \le 2.5/\sqrt{10} \big) 
+    \approx 2 \Phi \big( 2.5/\sqrt{10} \big) - 1 
+    = 0.5704.
+\end{align*}
+% The exact probability can be found as 
+% \begin{align*}
+%     \mathrm{Pr}(8 \le X \le 12)
+%     = \sum_{x = 8}^{12} \frac{10^x \mathrm{e}^{-10}}{x!}
+%     = 
+% \end{align*}
+% so the continuity correction significantly improves the accuracy of our estimation.
+
 
 
 \end{document}
