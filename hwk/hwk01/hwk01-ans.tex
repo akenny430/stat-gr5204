@@ -84,6 +84,31 @@ If we do use continuity correction, then we have
 % \end{align*}
 % so the continuity correction significantly improves the accuracy of our estimation.
 
-
+%' ============================================================================================================================================================
+\section{Question 3} \noindent
+We are assuming that when a program is run, an execution error will occur with probability \(\theta \in [0,1]\). If \(X\) is whether or not an execution error
+occurs, we have \(X \sim \mathrm{Ber}(\theta)\), and \(f(x \,|\, \theta) = \theta^x (1 - \theta)^{1 - x}\) for \(x = \{0,1\}\). We also believe that 
+\(\theta \sim \mathrm{Unif}(0,1)\), and so \(\xi(\theta) = 1\) for \(0 \le \theta \le 1\).
+\begin{itemize}
+    \item[(a)] After 25 runs of the program we have 10 erros, so \(f(\mathbf{x} \,|\, \theta) = \theta^{10}(1 - \theta)^{15}\). The marginal distribution of 
+    \(\mathbf{x}\) is given by 
+    \begin{align*}
+        g_{\bm{X}}(\mathbf{x})
+        = \int_{\Omega} f(\mathbf{x} \,|\, \theta) \cdot \xi(\theta) \;\mathrm{d}\theta 
+        = \int_0^1 \theta^{10} (1 - \theta)^{15} \cdot 1 \;\mathrm{d}\theta
+        = \int_0^1 \theta^{11 - 1} (1 - \theta)^{16 - 1} \;\mathrm{d}\theta
+        = \mathrm{B}(11, 16),
+    \end{align*}
+    and so the posterior pdf of \(\theta\) is 
+    \begin{align*}
+        \xi(\theta \,|\, \mathbf{x})
+        = \frac{f(\mathbf{x} \,|\, \theta) \cdot \xi(\theta)}{g_{\bm{X}}(\mathbf{x})}
+        = \frac{\theta^{10} (1 - \theta)^{15} \cdot 1}{\mathrm{B}(11, 16)}
+        = \frac{\theta^{11 - 1} (1 - \theta)^{16 - 1}}{\mathrm{B}(11, 16)}.
+    \end{align*}
+    That is, \(\theta \sim \mathrm{Beta}(11, 16)\). 
+    \item[(b)] If we are using squared error loss, then our Bayes' estimate would be 
+    \(\hat{\theta} = \mathbb{E}(\theta \,|\, \mathbf{x}) = 11/(11 + 16) = 11/27\).
+\end{itemize}
 
 \end{document}
