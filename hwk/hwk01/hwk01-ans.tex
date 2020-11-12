@@ -122,4 +122,17 @@ and we know that Beta distributions are closed under sampling from a Bernoulli d
 10 apples, we find that three of them are bad, so our posterior distribution becomes \(\theta \sim \mathrm{Beta}(3+3, 4+7) = \mathrm{Beta}(6,11)\).
 If we use squared error loss, our Bayes' estimate is then \(\delta^*(\mathbf{x}) = \mathbb{E}(\theta \,|\, \mathbf{x}) = 6 / 17\).
 
+%' ============================================================================================================================================================
+\section{Question 5} \noindent
+Let \(X_1, \ldots, X_n\) be a random sample from \(X \sim \mathrm{Unif}(\theta, 2\theta)\), where \(\theta > 0\). The likelihood function is then given by 
+\(f(\mathbf{x} \,|\, \theta) = 1 / \theta^n\) when \(\theta \le x_i \le 2\theta\) for \(i \in \{1,\ldots,n\}\). We can re-frame the boundaries of the likelihood 
+function using order statistics. Since we need every observation \(x_i \in [\theta, 2\theta]\), it follows that 
+\(\theta \le x_{(1)} \le \cdots \le x_{(n)} \le 2\theta\), where \(x_{(j)}\) is the \(j\)th order statistics; namely, we have \(\theta \le x_{(1)}\) 
+and \(x_{(n)} \le 2 \theta\). From the second inequality,
+we have \(x_{(n)}/2 \le \theta\), and so the possible values of \(\theta\) are \(x_{(n)}/2 \le \theta \le x_{(1)}\). In other words, 
+even though we had the original parameter space \(\Theta = (0, \infty)\), because the bounds of the density functions depended on \(\theta\), we were able to 
+restrict \(\theta\) to a new parameter space \(\tilde{\Theta} = [x_{(n)}/2, x_{(1)}]\). We can see that our likelihood function is monotone decreasing, and so 
+it will be maximized by the smallest possible value of \(\theta\). Therefore, the MLE of \(\theta\) is \(\hat{\theta} = x_{(n)} / 2\).
+
+
 \end{document}
