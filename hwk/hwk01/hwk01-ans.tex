@@ -134,5 +134,50 @@ even though we had the original parameter space \(\Theta = (0, \infty)\), becaus
 restrict \(\theta\) to a new parameter space \(\tilde{\Theta} = [x_{(n)}/2, x_{(1)}]\). We can see that our likelihood function is monotone decreasing, and so 
 it will be maximized by the smallest possible value of \(\theta\). Therefore, the MLE of \(\theta\) is \(\hat{\theta} = x_{(n)} / 2\).
 
+%' ============================================================================================================================================================
+\section{Question 6} \noindent
+Suppose that \(\bm{X} = (X_1, X_2, X_3)^T\) are each exponentially distributed with \(\mathbb{E}X_i = i\theta\), where \(\theta > 0\). This implies that 
+\(X_i \sim \mathrm{Exp}(1 / i\theta)\), and so \(f(x_i \,|\, \theta) = \mathrm{e}^{-x_i / i\theta} / i\theta\). 
+\begin{itemize}
+    \item[(a)] The likelihood function is given by 
+    \begin{align*}
+        f(\mathbf{x} \,|\, \theta)
+        = \prod_{i=1}^3 f(x_i \,|\, \theta)
+        = \prod_{i=1}^3 \frac{\mathrm{e}^{-x_i / i\theta}}{i \theta}
+        = \frac{1}{6 \theta^3} \mathrm{exp} \left( - \frac{1}{\theta} \sum_{i=1}^3 \frac{x_i}{i} \right),
+        % = \frac{1}{6 \theta^3} \mathrm{exp} \left( - \frac{1}{\theta} \sum_{i=1}^3 \frac{x_i}{i} \right).
+    \end{align*}
+    % For notational ease, let \(\varphi(\mathbf{x}) = \sum_{i=1}^3 x_i / i\), and so \(f(\mathbf{x} \,|\, \theta) = \mathrm{e}^{- \varphi(\mathbf{x}) / \theta} / 6 \theta^3\)
+    and the corresponding log-likelihood function is given by 
+    \(\ell(\mathbf{x} \,|\, \theta) = -3 \log (6 \theta) - \frac{1}{\theta} \sum_{i=1}^3 x_i / i.\)
+    % and the corresponding log-likelihood function is given by 
+    % \begin{align*}
+    %     \ell(\mathbf{x} \,|\, \theta)
+    %     = \log f(\mathbf{x} \,|\, \theta)
+    %     = -3 \log (6 \theta) - \frac{1}{\theta} \sum_{i=1}^3 \frac{x_i}{i}.
+    % \end{align*}
+    Differentiating \(\ell(\mathbf{x} \,|\, \theta)\) with respect to \(\theta\), setting to 0, and solving for \(\theta\) gives us the MLE:
+    \begin{align*}
+        \frac{\partial \ell}{\partial \theta}  
+        = - \frac{3}{\theta} + \frac{1}{\theta^2} \sum_{i=1}^3 \frac{x_i}{i} 
+        \overset{\text{set}}{=} 0
+        ~~\Longrightarrow~~
+        \hat{\theta}(\bm{X}) = \frac{1}{3} \sum_{i=1}^3 \frac{X_i}{i}
+    \end{align*}
+    \item[(b)] Let \(\psi = 1 / \theta\), and we believe that \(\psi \sim \mathrm{Gamma}(\alpha, \beta)\), i.e. 
+    \(\xi(\psi) = \frac{\beta^{\alpha}}{\Gamma(\alpha)} \psi^{\alpha} \mathrm{e}^{-\beta \psi}\) for \(\psi > 0\). 
+    For notational ease, let \(\varphi(\mathbf{x}) = \sum_{i=1}^3 x_i / i\); the likelihood function of \(\psi\) is then given by 
+    \(f(\mathbf{x} \,|\, \psi) = \psi^3 \mathrm{e}^{- \varphi(\mathbf{x}) \psi} / 6\). We have 
+    \begin{align*}
+        \xi(\psi \,|\, \mathbf{x})
+        \propto f(\mathbf{x} \,|\, \psi) \cdot \xi(\psi) 
+        = \frac{1}{6} \psi^3 \mathrm{e}^{- \varphi(\mathbf{x}) \psi} \cdot \frac{\beta^{\alpha}}{\Gamma(\alpha)} \psi^{\alpha - 1} \mathrm{e}^{-\beta \psi}
+        \propto \psi^{\alpha + 3 - 1} \mathrm{e}^{-(\beta + \varphi(\mathbf{x})) \psi}.
+    \end{align*}
+    This is very similar to a Gamma distribution with parameters \(\tilde{\alpha} = \alpha + 3\) and \(\tilde{\beta} = \beta + \varphi(\mathbf{x})\), and adding 
+    in the normalizing constants would make it so. Therefore, we conclude that \(\psi \,|\, \mathbf{x} \sim \mathrm{Gamma} \big( \alpha + 3, \beta + \varphi(\mathbf{x}) \big)\).
+    
+\end{itemize}
+
 
 \end{document}
