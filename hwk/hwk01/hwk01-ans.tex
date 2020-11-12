@@ -111,4 +111,15 @@ occurs, we have \(X \sim \mathrm{Ber}(\theta)\), and \(f(x \,|\, \theta) = \thet
     \(\hat{\theta} = \mathbb{E}(\theta \,|\, \mathbf{x}) = 11/(11 + 16) = 11/27\).
 \end{itemize}
 
+%' ============================================================================================================================================================
+\section{Question 4} \noindent
+We believe that \(\theta \sim \mathrm{Beta}(3, 4)\), where \(\theta \in [0,1]\) is the proportion of bad apples in the lot. 
+% For each pick, if \(X \in \{0,1\}\) denotes whether or not a bad apple was chosen, we have \(f(x \,|\, \theta) = \theta^x (1 - \theta)^{1 - x}\)
+% After randomly choosing 10 applies, we find that three of them are bad, so our posterior 
+% Since choosing apples and determining whether or not it is bad is sampling from a Bernoulli distribution
+Choosing apples from the lot is essentially sampling from a Bernoulli distribution with parameter \(\theta\),
+and we know that Beta distributions are closed under sampling from a Bernoulli distribution. After choosing 
+10 apples, we find that three of them are bad, so our posterior distribution becomes \(\theta \sim \mathrm{Beta}(3+3, 4+7) = \mathrm{Beta}(6,11)\).
+If we use squared error loss, our Bayes' estimate is then \(\delta^*(\mathbf{x}) = \mathbb{E}(\theta \,|\, \mathbf{x}) = 6 / 17\).
+
 \end{document}
