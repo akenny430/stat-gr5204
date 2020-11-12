@@ -94,7 +94,7 @@ occurs, we have \(X \sim \mathrm{Ber}(\theta)\), and \(f(x \,|\, \theta) = \thet
     \(\mathbf{x}\) is given by 
     \begin{align*}
         g_{\bm{X}}(\mathbf{x})
-        = \int_{\Omega} f(\mathbf{x} \,|\, \theta) \cdot \xi(\theta) \;\mathrm{d}\theta 
+        = \int_{\Theta} f(\mathbf{x} \,|\, \theta) \cdot \xi(\theta) \;\mathrm{d}\theta 
         = \int_0^1 \theta^{10} (1 - \theta)^{15} \cdot 1 \;\mathrm{d}\theta
         = \int_0^1 \theta^{11 - 1} (1 - \theta)^{16 - 1} \;\mathrm{d}\theta
         = \mathrm{B}(11, 16),
@@ -107,8 +107,8 @@ occurs, we have \(X \sim \mathrm{Ber}(\theta)\), and \(f(x \,|\, \theta) = \thet
         = \frac{\theta^{11 - 1} (1 - \theta)^{16 - 1}}{\mathrm{B}(11, 16)}.
     \end{align*}
     That is, \(\theta \sim \mathrm{Beta}(11, 16)\). 
-    \item[(b)] If we are using squared error loss, then our Bayes' estimate would be 
-    \(\hat{\theta} = \mathbb{E}(\theta \,|\, \mathbf{x}) = 11/(11 + 16) = 11/27\).
+    \item[(b)] If we are using squared error loss, then our Bayes' estimate is 
+    \(\delta^*(\mathbf{x}) = \mathbb{E}(\theta \,|\, \mathbf{x}) = 11/27\).
 \end{itemize}
 
 %' ============================================================================================================================================================
