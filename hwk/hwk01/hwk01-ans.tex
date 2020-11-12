@@ -106,7 +106,7 @@ occurs, we have \(X \sim \mathrm{Ber}(\theta)\), and \(f(x \,|\, \theta) = \thet
         = \frac{\theta^{10} (1 - \theta)^{15} \cdot 1}{\mathrm{B}(11, 16)}
         = \frac{\theta^{11 - 1} (1 - \theta)^{16 - 1}}{\mathrm{B}(11, 16)}.
     \end{align*}
-    That is, \(\theta \sim \mathrm{Beta}(11, 16)\). 
+    That is, \(\theta \,|\, \mathbf{x} \sim \mathrm{Beta}(11, 16)\). 
     \item[(b)] If we are using squared error loss, then our Bayes' estimate is 
     \(\delta^*(\mathbf{x}) = \mathbb{E}(\theta \,|\, \mathbf{x}) = 11/27\).
 \end{itemize}
@@ -176,8 +176,46 @@ Suppose that \(\bm{X} = (X_1, X_2, X_3)^T\) are each exponentially distributed w
     \end{align*}
     This is very similar to a Gamma distribution with parameters \(\tilde{\alpha} = \alpha + 3\) and \(\tilde{\beta} = \beta + \varphi(\mathbf{x})\), and adding 
     in the normalizing constants would make it so. Therefore, we conclude that \(\psi \,|\, \mathbf{x} \sim \mathrm{Gamma} \big( \alpha + 3, \beta + \varphi(\mathbf{x}) \big)\).
-    
 \end{itemize}
 
+%' ============================================================================================================================================================
+\section{Question 7} \noindent
+% Let \(X \sim \mathrm{Unif}(0, \theta)\), so \(f(x \,|\, \theta) = 1 / \theta\) for \(0 \le x \le \theta\) (note then that \(\Theta = [x, \infty)\)). We assume 
+% that \(\xi(\theta) = \theta \mathrm{e}^{-\theta}\). 
+We assume that our parameter \(\theta\) has a prior density \(\xi(\theta) = \theta \mathrm{e}^{-\theta}\) for \(\theta > 0\). 
+Let \(X \sim \mathrm{Unif}(0, \theta)\), and so \(f(x \,|\, \theta) = 1 / \theta\) for \(0 \le x \le \theta\). We note that while the original parameter space
+was \(\Theta = (0, \infty)\), sampling from a uniform distribution who's bound depended on \(\theta\) resulted in a new parameter space 
+\(\tilde{\Theta} = [x, \infty)\). 
+The marginal distribution of \(X\) is given by 
+\begin{align*}
+    g_{X}(x) 
+    = \int_{\tilde{\Theta}} f(x \,|\, \theta) \cdot \xi(\theta) \;\mathrm{d}\theta
+    = \int_x^{\infty} \frac{1}{\theta} \cdot \theta \mathrm{e}^{- \theta} \;\mathrm{d}\theta
+    = \int_x^{\infty} \mathrm{e}^{- \theta} \;\mathrm{d}\theta
+    = \Big[ -\mathrm{e}^{-\theta} \Big]_x^{\infty}
+    = \mathrm{e}^{-x},
+\end{align*}
+and so our posterior density for \(\theta\) is given by 
+\begin{align*}
+    \xi(\theta \,|\, x) 
+    = \frac{f(x \,|\, \theta) \cdot \xi(\theta)}{g_X(x)}
+    = \frac{1}{\theta} \cdot \theta \mathrm{e}^{-\theta} \cdot \frac{1}{\mathrm{e}^{-x}}
+    = \mathrm{e}^{-(\theta - x)}.
+\end{align*}
+This denisty corresponds to a ``shifted'' exponential distribution with \(\lambda = 1\); instead of starting at zero, we are starting at \(x\).
+\begin{itemize}
+    \item[(a)] Using squared error loss, our Bayes' estimate is the mean of the posterior distribution:
+    \begin{align*}
+        \delta^*(x)
+        = \mathbb{E}(\theta \,|\, x)
+        = \int_x^{\infty} \theta \cdot \mathrm{e}^{-(\theta - x)} \;\mathrm{d}\theta
+        = \Big[ -\theta \mathrm{e}^{-(\theta - x)} \Big]_x^{\infty} + \int_x^{\infty} \mathrm{e}^{-(\theta - x)} \;\mathrm{d}\theta
+        = x + 1.
+    \end{align*}
+    \item[(b)] Using absolute error loss, our Bayes' estimate is the median of the posterior distribution. 
+    The posterior cdf is easily seen to be \(F(\theta) = 1 - \mathrm{e}^{-(\theta - x)}\).
+    To get the median, we need 
+    \(F \big( \delta^*(x) \big) = 1 - \mathrm{e}^{-(\delta^*(x) - x)} = 1/2\), and solving for \(\delta^*(x)\) gives us \(\delta^*(x) = x + \log 2\).
+\end{itemize}
 
 \end{document}
