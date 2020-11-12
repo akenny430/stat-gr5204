@@ -119,7 +119,7 @@ We believe that \(\theta \sim \mathrm{Beta}(3, 4)\), where \(\theta \in [0,1]\) 
 % Since choosing apples and determining whether or not it is bad is sampling from a Bernoulli distribution
 Choosing apples from the lot is essentially sampling from a Bernoulli distribution with parameter \(\theta\),
 and we know that Beta distributions are closed under sampling from a Bernoulli distribution. After choosing 
-10 apples, we find that three of them are bad, so our posterior distribution becomes \(\theta \sim \mathrm{Beta}(3+3, 4+7) = \mathrm{Beta}(6,11)\).
+10 apples, we find that three of them are bad, so our posterior distribution becomes \(\theta \,|\, \mathbf{x} \sim \mathrm{Beta}(3+3, 4+7) = \mathrm{Beta}(6,11)\).
 If we use squared error loss, our Bayes' estimate is then \(\delta^*(\mathbf{x}) = \mathbb{E}(\theta \,|\, \mathbf{x}) = 6 / 17\).
 
 %' ============================================================================================================================================================
