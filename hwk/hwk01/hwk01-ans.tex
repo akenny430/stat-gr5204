@@ -91,7 +91,7 @@ occurs, we have \(X \sim \mathrm{Ber}(\theta)\), and \(f(x \,|\, \theta) = \thet
 \(\theta \sim \mathrm{Unif}(0,1)\), and so \(\xi(\theta) = 1\) for \(0 \le \theta \le 1\).
 \begin{itemize}
     \item[(a)] After 25 runs of the program we have 10 erros, so \(f(\mathbf{x} \,|\, \theta) = \theta^{10}(1 - \theta)^{15}\). The marginal distribution of 
-    \(\mathbf{x}\) is given by 
+    \(\bm{X}\) is given by 
     \begin{align*}
         g_{\bm{X}}(\mathbf{x})
         = \int_{\Theta} f(\mathbf{x} \,|\, \theta) \cdot \xi(\theta) \;\mathrm{d}\theta 
@@ -210,16 +210,73 @@ This denisty corresponds to a ``shifted'' exponential distribution with \(\lambd
         = \mathbb{E}(\theta \,|\, x)
         = \int_x^{\infty} \theta \cdot \mathrm{e}^{-(\theta - x)} \;\mathrm{d}\theta
         = \Big[ -\theta \mathrm{e}^{-(\theta - x)} \Big]_x^{\infty} + \int_x^{\infty} \mathrm{e}^{-(\theta - x)} \;\mathrm{d}\theta
+        % = \Big[ -\theta \mathrm{e}^{-(\theta - x)} \Big]_x^{\infty} + \int_x^{\infty} \mathrm{e}^{-(\theta - x)} \;\mathrm{d}\theta \\
+        % &= \Big[ -\theta \mathrm{e}^{-(\theta - x)} \Big]_x^{\infty} + \Big[ - \mathrm{e}^{-(\theta - x)} \Big]_x^{\infty}
+        % = x + \Big[ - \mathrm{e}^{-(\theta - x)} \Big]_x^{\infty}
         = x + 1.
     \end{align*}
     \item[(b)] Using absolute error loss, our Bayes' estimate is the median of the posterior distribution. 
-    The posterior cdf is easily seen to be \(F(\theta) = 1 - \mathrm{e}^{-(\theta - x)}\).
+    The posterior cdf is easily seen to be \(\Xi(\theta \,|\, x) = 1 - \mathrm{e}^{-(\theta - x)}\).
     To get the median, we need 
-    \(F \big( \delta^*(x) \big) = 1 - \mathrm{e}^{-(\delta^*(x) - x)} = 1/2\), and solving for \(\delta^*(x)\) gives us \(\delta^*(x) = x + \log 2\).
+    \(\Xi \big( \delta^*(x) \big) = 1 - \mathrm{e}^{-(\delta^*(x) - x)} = 1/2\), and solving for \(\delta^*(x)\) gives us \(\delta^*(x) = x + \log 2\).
 \end{itemize}
 
 %' ============================================================================================================================================================
 \section{Question 8} \noindent
-
+Because \(0 \le \beta \le 1\), we have \(1/3 \le \theta \le 2/3\). If we are sampling from \(X \sim \mathrm{Ber}(\theta)\), then the likelihood 
+and log-likelihood functions are given by 
+\(f(\mathbf{x} \,|\, \theta) = \theta^{n \bar{x}}(1 - \theta)^{n(1 - \bar{x})}\) and 
+\(\ell(\mathbf{x} \,|\, \theta) = n \bar{x} \log \theta + n(1 - \bar{x}) \log (1 - \theta).\)
+% \begin{align*}
+    % f(\mathbf{x} \,|\, \theta) &= \theta^{n \bar{x}}(1 - \theta)^{n(1 - \bar{x})} \\
+    % \ell(\mathbf{x} \,|\, \theta) &= n \bar{x} \log \theta + n(1 - \bar{x}) \log (1 - \theta).
+% \end{align*}  
+Differentiating \(\ell(\mathbf{x} \,|\, \theta)\), setting equal to zero, and solving for \(\theta\) gives the MLE as
+\begin{align*}
+    \frac{\partial \ell(\mathbf{x} \,|\, \theta)}{\partial \theta}
+    = \frac{n \bar x}{\theta} - \frac{n(1 - \bar{x})}{1 - \theta}
+    % = n \left( \frac{\bar x}{\theta} - \frac{1 - \bar{x}}{1 - \theta} \right)
+    = n \left( \frac{\bar{x} - \theta}{\theta(1 - \theta)} \right)
+    \overset{\text{set}}{=} 0
+    ~~\Longrightarrow~~ \hat{\theta} = \bar{x}.
+\end{align*}
+% need to re-write this better
+We must be cautious; because each \(x_i \in \{0,1\}\), we can have \(\bar{x} \in [0,1]\), and so the maximum of \(\ell(\mathbf{x} \,|\, \theta)\)
+can occur at \(\hat{\theta} \in [0,1]\). However, because of the contraints placed on \(\theta\) by \(\beta\), this maximum can potentially fall outside the range of 
+possible values. To remedy this, we will consider two cases:
+\begin{enumerate}
+    % \item \(\bar{x} < 1/3\): we have \(\partial \ell / \partial \theta \propto 1/3 - \theta\), so for all values 
+    \item \(\bar{x} < 1/3\): for all values \(\theta \in [1/3, 2/3]\), we have \(\partial \ell / \partial \theta < 0 \), so \(\ell(\mathbf{x} \,|\, \theta)\)
+    is a decreasing function. Then the maximum value of \(\ell(\mathbf{x} \,|\, \theta)\) is obtained when \(\theta = 1/3\).
+    \item \(\bar{x} > 2/3\): for all values \(\theta \in [1/3, 2/3]\), we have \(\partial \ell / \partial \theta > 0 \), so \(\ell(\mathbf{x} \,|\, \theta)\)
+    is an increasing function. Then the maximum value of \(\ell(\mathbf{x} \,|\, \theta)\) is obtained when \(\theta = 2/3\).
+\end{enumerate}
+Therefore, the MLEs for both \(\theta\) and \(\beta\) are given by 
+\begin{align*}
+    \hat{\theta} 
+    = \begin{cases}
+        \hfil \bar{X} & \text{if \(1/3 \le \bar{X} \le 2/3\)}, \\
+        1/3 & \text{if \(\bar{X} < 1/3\)}, \\
+        2/3 & \text{if \(\bar{X} > 2/3\)}.
+    \end{cases}
+    ~~~\text{and}~~~
+    \hat{\beta}
+    = 3 \hat{\theta} - 1
+    = \begin{cases}
+        3\bar{X} - 1 & \text{if \(1/3 \le \bar{X} \le 2/3\)}, \\
+        \hfil 0 & \text{if \(\bar{X} < 1/3\)}, \\
+        \hfil 1 & \text{if \(\bar{X} > 2/3\)}.
+    \end{cases}
+\end{align*}
+This is because \(\beta = 3 \theta - 1\), which means the MLE of \(\beta\) is given by \(\hat{\beta} = 3 \hat{\theta} - 1\).
+% \begin{align*}
+%     \hat{\beta}
+%     = 3 \hat{\theta} - 1
+%     = \begin{cases}
+%         3\bar{X} - 1 & \text{if \(1/3 \le \bar{X} \le 2/3\)}, \\
+%         \hfil 0 & \text{if \(\bar{X} < 1/3\)}, \\
+%         \hfil 1 & \text{if \(\bar{X} > 2/3\)}.
+%     \end{cases}
+% \end{align*}
 
 \end{document}
