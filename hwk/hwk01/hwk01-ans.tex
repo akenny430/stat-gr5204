@@ -330,7 +330,7 @@ From the previous question, by incorporating indicator functions, our likelihood
     = C(\mathbf{x}, \alpha) \cdot x_0^{\alpha n} \cdot \mathbb{I}_{[x_0, \infty)}(x_{(1)}).
 \end{align*}
 By the Factorization Theorem, where \(u(\mathbf{x}) = C(\mathbf{x}, \alpha)\) and \(v(x_{(1)}, x_0) = x_0^{\alpha n} \cdot \mathbb{I}_{[x_0, \infty)}(x_{(1)})\),
-the first order statistic \(X_{(1)}\) is a sufficient statistic for \(x_0\). Since it is also the MLE of \(x_0\), is follows that \(X_{(1)}\) is a minimal
+the first order statistic \(X_{(1)}\) is a sufficient statistic. Since it is also the MLE of \(x_0\), is follows that \(X_{(1)}\) is a minimal
 sufficient statistic.
 
 %' ============================================================================================================================================================
@@ -352,6 +352,26 @@ Differentiating with respect to \(\alpha\) and setting equal to zero gives us th
     \hat{\alpha} = \frac{n}{\sum_{i=1}^n \log(X_i / X_{(1)})}.
 \end{align*}
 
+%' ============================================================================================================================================================
+\section{Question 13} \noindent
+Looking at our likelihood function, and incorporating indicator functions, we see that 
+\begin{align*}
+    f(\mathbf{x} \,|\, \alpha, x_0)
+    = \alpha^n x_0^{\alpha n} \left( \prod_{i=1}^n \frac{1}{x_i} \right)^{\alpha + 1} \cdot \mathbb{I}_{[x_0,\infty)}(x_{(1)})
+    = \alpha^n x_0^{\alpha n} \Big( r_2(\mathbf{x}) \Big)^{\alpha + 1} \cdot \mathbb{I}_{[x_0,\infty)} \Big( r_1(\mathbf{x}) \Big),
+\end{align*}
+where \(r_1(\mathbf{x}) = x_{(1)}\) and \(r_2(\mathbf{x}) = \prod_{i = 1}^n 1 / x_i\). By the Factorization Theorem, \(r_1(\mathbf{x})\) and \(r_2(\mathbf{x})\)
+are jointly sufficient statistics, and we immediately see that \(\hat{x}_0 = x_{(1)}\) is a sufficient statistic. When looking at \(\hat{\alpha}\), we see that 
+it can be written as 
+\begin{align*}
+    \hat{\alpha}
+    = \frac{n}{\sum_{i=1}^n \log(x_i / x_{(1)})}
+    = - \frac{n}{\sum_{i=1}^n \log(x_{(1)} / x_i) }
+    = - \frac{n}{\log \left( \prod_{i=1}^n  x_{(1)} / x_i \right)}
+    = - \frac{n}{\log \Big( x_{(1)}^n r_2(\mathbf{x}) \Big)}.
+\end{align*}
+This means \(\hat{\alpha}\) is an injective transformation of \(r_2(\mathbf{x})\), and so it is a sufficient statistic, and \(\hat{\alpha}\) and \(\hat{x}_0\) 
+form a pair of jointy sufficient statistics. Because the are the MLEs, then they are minimal jointly sufficient statistics. 
 
 
 \end{document}
