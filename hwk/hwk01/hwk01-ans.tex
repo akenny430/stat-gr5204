@@ -294,6 +294,34 @@ is as well, so \(x_{(1)} \ge \theta\). We can incorporate this condition into th
 \end{align*}
 By the Factorization Theorem, \(\bar{X}\) and \(X_{(1)}\) are a pair of jointly sufficient statistics for \(\beta\) and \(\theta\). 
 
+%' ============================================================================================================================================================
+\section{Question 10} \noindent
+% Let \(\mathbf{X} = (X_1, \ldots, X_n)^T\) be a random sample from a Pareto distribution, so 
+% \(f(x_i \,|\, \alpha, x_0) = \alpha x_0^{\alpha} / x_i^{\alpha + 1} \mathbb{I}_{[x_0, \infty)}(x_i)\). The likelihood function is given by 
+% \begin{align*}
+%     f(\mathbf{x} \,|\, \alpha, x_0)
+%     % = \prod_{i=1}^n \alpha x_0^{\alpha} / x_i^{\alpha + 1} \mathbb{I}_{[x_0, \infty)}(x_i)
+%     = \prod_{i=1}^n \frac{\alpha x_0^{\alpha}}{x_i^{\alpha + 1}} \mathbb{I}_{[x_0, \infty)}(x_i)
+%     = \alpha^n x_0^{n \alpha} \left( \prod_{i=1}^n \frac{1}{x_i} \right)^{\alpha + 1} \mathbb{I}_{[x_0, \infty)}(x_{(1)})
+% \end{align*}
+Let \(x_1, \ldots, X_n \overset{\text{iid}}{\sim} \mathrm{Pareto}(\alpha, x_0)\), where \(\alpha > 0\) is known and \(x_0 > 0\) is unknown. The likelihood 
+function is given by 
+\begin{align*}
+    f(\mathbf{x} \,|\, \alpha, x_0) 
+    = \prod_{i=1}^n \frac{\alpha x_0^{\alpha}}{x_i^{\alpha + 1}}
+    = \alpha^n x_0^{\alpha n} \left( \prod_{i=1}^n \frac{1}{x_i} \right)^{\alpha + 1}
+    % = \frac{\alpha^n}{\prod_{i=1}^n x_i^{\alpha + 1}} x_0^{\alpha n}
+    = C(\mathbf{x}, \alpha) \cdot x_0^{\alpha n},
+    ~~~\text{where}~~~
+    C(\mathbf{x}, \alpha) = \alpha^n \left( \prod_{i=1}^n \frac{1}{x_i} \right)^{\alpha + 1},
+\end{align*}
+when \(x_i \ge x_0\) for \(i \in \{1, \ldots, n\}\). 
+This is the same as saying \(x_{(1)} \ge x_0\), where \(x_{(1)}\) is the first order statistic, and so 
+our new parameter space for \(x_0\) is \((0, x_{(1)}]\) (it was originally \((0, \infty)\)).
+In the likelihood function, \(C(\mathbf{x}, \alpha)\) is a constant (with respect to \(x_0\)) that depends on \(\mathbf{x}\) and \(\alpha\). 
+We can see that for \(x_0 \in (0, x_{(1)}]\), \(f(\mathbf{x} \,|\, \alpha, x_0)\) is an increasing function, so its maximum will be obtained 
+at the largest possible value, \(x_{(1)}\). Therefore, our MLE is \(\hat{x}_0 = X_{(1)}\). 
+
 
 
 \end{document}
