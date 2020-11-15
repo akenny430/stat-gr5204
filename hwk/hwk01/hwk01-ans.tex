@@ -279,4 +279,21 @@ This is because \(\beta = 3 \theta - 1\), which means the MLE of \(\beta\) is gi
 %     \end{cases}
 % \end{align*}
 
+%' ============================================================================================================================================================
+\section{Question 9} \noindent
+We are sampling from a ``shifted'' exponential distribution, i.e. its density is given by \(f(x \,|\, \beta, \theta) = \beta \mathrm{e}^{-\beta (x - \theta)}\)
+for \(x \ge \theta\). The likelihood function is then given by \(f(\mathbf{x} \,|\, \beta, \theta) = \beta^n \mathrm{e}^{-n \beta (\bar{x} - \theta)}\) when
+\(x_i \ge \theta \) for \(i \in \{1, \ldots, n\}\). If every observation \(x_i \ge \theta\), then it is also true that the lowest value for each observation
+is as well, so \(x_{(1)} \ge \theta\). We can incorporate this condition into the likelihood function using an indicator function:
+\begin{align*}
+    f(\mathbf{x} \,|\, \beta, \theta) 
+    % = \beta^n \mathrm{exp} \left( - n \beta (\bar{x} - \theta) \right)
+    = \beta^n \mathrm{e}^{-n \beta (\bar{x} - \theta)} \cdot \mathbb{I}_{[\theta, \infty)}(x_{(1)}).
+    % = 1 \cdot \beta^n \mathrm{e}^{-n \beta (\bar{x} - \theta)} \cdot \mathbb{I}_{[\theta, \infty)}(x_{(1)})
+    % = \Big( \beta^n \Big) \cdot \Big( \mathrm{e}^{-n \beta (\bar{x} - \theta)} \cdot \mathbb{I}_{[\theta, \infty)}(x_{(1)}) \Big)
+\end{align*}
+By the Factorization Theorem, \(\bar{X}\) and \(X_{(1)}\) are a pair of jointly sufficient statistics for \(\beta\) and \(\theta\). 
+
+
+
 \end{document}
