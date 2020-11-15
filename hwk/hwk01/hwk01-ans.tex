@@ -322,6 +322,17 @@ In the likelihood function, \(C(\mathbf{x}, \alpha)\) is a constant (with respec
 We can see that for \(x_0 \in (0, x_{(1)}]\), \(f(\mathbf{x} \,|\, \alpha, x_0)\) is an increasing function, so its maximum will be obtained 
 at the largest possible value, \(x_{(1)}\). Therefore, our MLE is \(\hat{x}_0 = X_{(1)}\). 
 
+%' ============================================================================================================================================================
+\section{Question 11} \noindent
+From the previous question, by incorporating indicator functions, our likelihood function can be written as 
+\begin{align*}
+    f(\mathbf{x} \,|\, \alpha, x_0)
+    = C(\mathbf{x}, \alpha) \cdot x_0^{\alpha n} \cdot \mathbb{I}_{[x_0, \infty)}(x_{(1)}).
+\end{align*}
+By the Factorization Theorem, where \(u(\mathbf{x}) = C(\mathbf{x}, \alpha)\) and \(v(x_{(1)}, x_0) = x_0^{\alpha n} \cdot \mathbb{I}_{[x_0, \infty)}(x_{(1)})\),
+the first order statistic \(X_{(1)}\) is a sufficient statistic for \(x_0\). Since it is also the MLE of \(x_0\), is follows that \(X_{(1)}\) is a minimal
+sufficient statistic.
+
 
 
 \end{document}
