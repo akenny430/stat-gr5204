@@ -333,6 +333,25 @@ By the Factorization Theorem, where \(u(\mathbf{x}) = C(\mathbf{x}, \alpha)\) an
 the first order statistic \(X_{(1)}\) is a sufficient statistic for \(x_0\). Since it is also the MLE of \(x_0\), is follows that \(X_{(1)}\) is a minimal
 sufficient statistic.
 
+%' ============================================================================================================================================================
+\section{Question 12} \noindent
+From question 10, we already know that \(\hat{x}_0 = X_{(1)}\), the first order statistic; our likelihood function is already maximized with respect to \(x_0\).
+We have already derived the likelihood function in question 10, and the log-likelihood function is given by 
+\begin{align*}
+    \ell(\mathbf{x} \,|\, \alpha, x_0 \overset{\text{set}}{=} x_{(1)})
+    % = \log \left( \alpha^n x_0^{\alpha n} \left( \prod_{i=1}^n \frac{1}{x_i} \right)^{\alpha + 1} \right)
+    = n \log \alpha + \alpha n \log x_{(1)} - (\alpha + 1) \sum_{i=1}^n \log x_i.
+\end{align*}
+Differentiating with respect to \(\alpha\) and setting equal to zero gives us the MLE as 
+\begin{align*}
+    \frac{\partial \ell}{\partial \alpha}
+    = \frac{n}{\alpha} + n \log x_{(1)} - \sum_{i=1}^n \log x_i
+    = \frac{n}{\alpha} - \sum_{i=1}^n \log \left( \frac{x_i}{x_{(1)}} \right)
+    \overset{\text{set}}{=} 0
+    ~~\Longrightarrow~~
+    \hat{\alpha} = \frac{n}{\sum_{i=1}^n \log(X_i / X_{(1)})}.
+\end{align*}
+
 
 
 \end{document}
