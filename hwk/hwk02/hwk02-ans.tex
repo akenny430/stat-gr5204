@@ -39,4 +39,29 @@
 \section{Question 1} \noindent
 
 
+%' ============================================================================================================================================================
+\section{Question 9} \noindent
+If \(X_1, \ldots, X_n \overset{\mathrm{iid}}{\sim} \mathrm{N}(\mu, \sigma^2)\) with unknown \(\mu\) and \(\sigma^2\), then a \(\gamma\)\%{} confidence interval
+for \(\mu\) is given by 
+\begin{align*}
+    \mathcal{I} = \Big( ~\bar{X} - t_{\gamma}(n) \cdot S / \sqrt{n} ~,~ \bar{X} + t_{\gamma}(n) \cdot S / \sqrt{n} ~ \Big),
+\end{align*}
+where \(t_{\gamma}(n) = T_{n-1}^{-1} ( (1 + \gamma) / 2 )\) is the \((1 + \gamma) / 2\)th quantile of the \(t\) distribution with \(\mathrm{df} = n-1\) and \(S\)
+is the sample standard deviation. 
+The length of this confidence interval is given by 
+\begin{align*}
+    \Delta 
+    % = \bar{X} + T_{n-1}^{-1}\big( (1 + \gamma) / 2 \big) \frac{S}{\sqrt{n}} - \bigg( \bar{X} - T_{n-1}^{-1}\big( (1 + \gamma) / 2 \big) \frac{S}{\sqrt{n}} \bigg)
+    = \max (\mathcal{I}) - \min (\mathcal{I})
+    = \Big( \bar{X} + t_{\gamma}(n) \cdot S / \sqrt{n} \Big) - \Big( \bar{X} - t_{\gamma}(n) \cdot S / \sqrt{n} \Big)
+    = 2 t_{\gamma}(n) \cdot S / \sqrt{n}.
+\end{align*}
+The squared length is then given by \(\Delta^2 = 4 t_{\gamma}^2(n) \cdot S^2 / n\). 
+Because the sample variance is an unbiased estimator for \(\sigma^2\), we have \(\mathbb{E}[\Delta^2] = \mathbb{E} \big[ 4 t_{\gamma}^2(n) \cdot S^2 / n \big] = 4 t_{\gamma}^2(n) \cdot \sigma^2 / n\).
+We now set \(\mathbb{E}[\Delta^2] < \sigma^2 / 2\), and after some cancellations, we see that we need \(t_{\gamma}^2(n) / n < 1/8\). There is no way to find a
+closed-form expression for this, so we will have to check the value of \(t_{\gamma}^2(n) / n\) for increasing values of \(n\). I set up a \texttt{while} 
+loop in \texttt{R} to solve for it, and when \(\gamma = 0.9\), we find that \(n = 24\) is the smallest value of \(n\) such that \(\mathbb{E}[\Delta^2] < \sigma^2 / 2\).
+
+
+
 \end{document}
