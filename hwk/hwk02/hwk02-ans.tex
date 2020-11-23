@@ -101,6 +101,37 @@ Let \(\bm{X} \overset{\mathrm{iid}}{\sim} \mathrm{N}(\theta, \sigma^2)\), where 
     which is a \(95\)\%{} confidence interval for \(\theta\). 
 \end{itemize}
 
+%' ============================================================================================================================================================
+\section{Question 11} \noindent
+Let \(\bm{X} \overset{\mathrm{iid}}{\sim} \mathrm{Unif}(0, \theta)\), where \(\theta\) is unknown, and let \(Y = X_{(n)}\) be the \(n\)th order statistic. 
+\begin{itemize}
+    \item[(a)] Let \(F_i(x) = \mathrm{Pr}(X_i \le x) = x / \theta\) for all \(i \in \{1, \ldots, n\}\). Then the cdf of \(Y\) is 
+    \(G(y) = \prod_{i = 1}^n F_i(y) = \left( y / \theta \right)^n\), since all of the \(X_i\)'s are independent. The density of \(Y\) is then given by 
+    \(g(y) = n y^{n - 1} / \theta^n\) for \(y \in [0, \theta]\). By letting \(W = Y / \theta\), we have \(Y = \theta W\) and \(\partial Y / \partial W = \theta\), 
+    so the density of \(Y / \theta\) is given by \(h(w) = g\big( y(w) \big) \cdot \theta = n w^{n-1}\) for \(w \in [0,1]\). The cdf is then seen to be 
+    \(H(w) = w^n\), and so the quantile is given by \(H^{-1}(w) = \sqrt[n]{w}\).
+    % \begin{align*}
+    %     G(y) 
+    %     = \mathrm{Pr}(Y \le y)
+    %     = \mathrm{Pr} \big( X_1 \le y \cap \cdots \cap X_n \le y \big)
+    %     = \prod_{i = 1}^n F_i(y) = \left( \frac{y}{\theta} \right)^n
+    % \end{align*}
+    \item[(b)] Naturally, since we must have \(y \le \theta\), it is natural that \(Y\) will underestimate \(\theta\), and is therefore biased. We have 
+    \begin{align*}
+        \mathbb{E}[Y]
+        = \int_{0}^{\theta} y \cdot \frac{n y^{n-1}}{\theta^n} \,\partial y
+        = \frac{n}{\theta^n} \int_0^{\theta} y^n \,\partial y
+        = \frac{n}{\theta^n} \cdot \frac{y^{n+1}}{n+1} \bigg|_{0}^{\theta}
+        = \frac{n}{\theta^n} \cdot \frac{\theta^{n+1}}{n+1}
+        % = \frac{n}{n+1} \cdot \theta,
+        = \frac{n\theta}{n+1},
+    \end{align*}
+    and so the bias is \(\mathrm{bias}(Y) = \mathbb{E}[Y] - \theta = -\theta / (n+1)\). 
+    \item[(d)] Using the cdf of \(Y / \theta\), for any interval involving \(Y / \theta\), we have \(\mathrm{Pr}(a \le Y / \theta \le b) = b^n - a^n\), where 
+    \(a, b \in (0, 1]\). Rearranging the terms inside the interval gives us \(\mathrm{Pr}(Y / b \le \theta \le Y / a) = b^2 - a^2 \overset{\mathrm{set}}{=} \gamma\).
+    That is, as long as we impose the constraint that \(b^2 - a^2 = \gamma\), any interval \((Y/b, Y/a)\) is a \(\gamma\)\%{} confidence interval for \(\theta\). 
+\end{itemize}
+
 
 
 \end{document}
