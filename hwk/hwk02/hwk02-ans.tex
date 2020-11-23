@@ -62,6 +62,45 @@ We now set \(\mathbb{E}[\Delta^2] < \sigma^2 / 2\), and after some cancellations
 closed-form expression for this, so we will have to check the value of \(t_{\gamma}^2(n) / n\) for increasing values of \(n\). I set up a \texttt{while} 
 loop in \texttt{R} to solve for it, and when \(\gamma = 0.9\), we find that \(n = 24\) is the smallest value of \(n\) such that \(\mathbb{E}[\Delta^2] < \sigma^2 / 2\).
 
+%' ============================================================================================================================================================
+\section{Question 10} \noindent
+Let \(\bm{X} \overset{\mathrm{iid}}{\sim} \mathrm{N}(\theta, \sigma^2)\), where \(\theta\) is unknown and \(\sigma^2\) is known, and we assume prior that 
+\(\theta \sim \mathrm{N}(\mu, \nu^2\), where both \(\mu\) and \(\nu^2\) are known. 
+\begin{itemize}
+    \item[(a)] Since normal distributions are are conjugate to normal sampling, it follows
+    that \(\theta \,|\, \mathbf{x} \sim \mathrm{N}(\tilde{\mu}, \tilde{\sigma}^2)\), where 
+    \begin{align*}
+        \tilde{\mu}
+        = \frac{\sigma^2 \mu + n \nu^2 \bar{x}}{\sigma^2 n \nu^2}
+        ~~~\text{and}~~~
+        \tilde{\sigma}^2
+        = \frac{\sigma^2 \nu^2}{\sigma^2 + n \mu^2}.
+    \end{align*}
+    We also know that \((\theta \,|\, \mathbf{x} - \tilde{\mu}) / \tilde{\sigma} \sim \mathrm{N}(0,1)\), and so a \(95\)\%{} confidence interval for 
+    \(\theta \,|\, \mathbf{x}\) is given by 
+    \begin{align*}
+        \mathcal{I}
+        = \Big( ~ \tilde{\mu} - \Phi^{-1}(0.975) \cdot \tilde{\sigma} ~,~ \tilde{\mu} + \Phi^{-1}(0.975) \cdot \tilde{\sigma} ~ \Big).
+        % = \Big( ~ \frac{\sigma^2 \mu + n \nu^2 \bar{x}}{\sigma^2 n \nu^2} - \Phi^{-1}(0.975) \cdot \frac{\sigma^2 \nu^2}{\sigma^2 + n \mu^2} ~,~ \frac{\sigma^2 \mu + n \nu^2 \bar{x}}{\sigma^2 n \nu^2} + \Phi^{-1}(0.975) \cdot \frac{\sigma^2 \nu^2}{\sigma^2 + n \mu^2} ~ \Big)
+    \end{align*} 
+    \item[(b)] We can think of our interval \(\mathcal{I}\) as a function of \(\nu^2\). To examine what happens to \(\mathcal{I}(\mu^2)\) as \(\nu^2 \to \infty\), we 
+    will first look at \(\tilde{\mu}\) and \(\tilde{\sigma}\). Using L'Hopital's rule, we have
+    \begin{align*}
+        \lim_{\nu^2 \to \infty} \tilde{\mu}
+        &= \lim_{\nu^2 \to \infty} \frac{\sigma^2 \mu + n \nu^2 \bar{x}}{\sigma^2 n \nu^2}
+        = \lim_{\nu^2 \to \infty} \frac{n \bar{x}}{n}
+        = \bar{x}, \\
+        \lim_{\nu^2 \to \infty} \tilde{\sigma}
+        &= \lim_{\nu^2 \to \infty} \sqrt{\frac{\sigma^2 \nu^2}{\sigma^2 + n \mu^2}}
+        = \sqrt{ \lim_{\nu^2 \to \infty} \frac{\sigma^2 \nu^2}{\sigma^2 + n \mu^2}}
+        = \sqrt{ \lim_{\nu^2 \to \infty} \frac{\sigma^2}{n}}
+        % = \sqrt{\frac{\sigma^2}{n}}
+        = \frac{\sigma}{\sqrt{n}},
+    \end{align*}
+    and so \(\mathcal{I}(\nu^2) \to \big( ~\bar{x} - \Phi^{-1}(0.975) \cdot \sigma / \sqrt{n} ~,~ \bar{x} + \Phi^{-1}(0.975) \cdot \sigma / \sqrt{n} ~ \big)\),
+    which is a \(95\)\%{} confidence interval for \(\theta\). 
+\end{itemize}
+
 
 
 \end{document}
