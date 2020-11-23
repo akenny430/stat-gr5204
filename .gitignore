@@ -13,3 +13,6 @@
 *.synctex.gz
 *.nav
 *.snm
+
+# exams
+midterm-ans.pdf
