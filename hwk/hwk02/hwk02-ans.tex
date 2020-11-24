@@ -3,7 +3,7 @@
 \usepackage{mathtools, amssymb, bm}
 \usepackage{microtype}
 \usepackage[utf8]{inputenc}
-\usepackage[margin = 0.75in]{geometry}
+\usepackage[margin = 1in]{geometry}
 \usepackage{booktabs}
 \usepackage{graphicx}
 \usepackage{xcolor}
@@ -83,7 +83,7 @@ Let \(\bm{X} \overset{\mathrm{iid}}{\sim} \mathrm{N}(\theta, \sigma^2)\), where 
         = \Big( ~ \tilde{\mu} - \Phi^{-1}(0.975) \cdot \tilde{\sigma} ~,~ \tilde{\mu} + \Phi^{-1}(0.975) \cdot \tilde{\sigma} ~ \Big).
         % = \Big( ~ \frac{\sigma^2 \mu + n \nu^2 \bar{x}}{\sigma^2 n \nu^2} - \Phi^{-1}(0.975) \cdot \frac{\sigma^2 \nu^2}{\sigma^2 + n \mu^2} ~,~ \frac{\sigma^2 \mu + n \nu^2 \bar{x}}{\sigma^2 n \nu^2} + \Phi^{-1}(0.975) \cdot \frac{\sigma^2 \nu^2}{\sigma^2 + n \mu^2} ~ \Big)
     \end{align*} 
-    \item[(b)] We can think of our interval \(\mathcal{I}\) as a function of \(\nu^2\). To examine what happens to \(\mathcal{I}(\mu^2)\) as \(\nu^2 \to \infty\), we 
+    \item[(b)] We can think of our interval \(\mathcal{I}\) as a function of \(\nu^2\). To examine what happens to \(\mathcal{I}(\nu^2)\) as \(\nu^2 \to \infty\), we 
     will first look at \(\tilde{\mu}\) and \(\tilde{\sigma}\). Using L'Hopital's rule, we have
     \begin{align*}
         \lim_{\nu^2 \to \infty} \tilde{\mu}
@@ -132,6 +132,8 @@ Let \(\bm{X} \overset{\mathrm{iid}}{\sim} \mathrm{Unif}(0, \theta)\), where \(\t
     That is, as long as we impose the constraint that \(b^2 - a^2 = \gamma\), any interval \((Y/b, Y/a)\) is a \(\gamma\)\%{} confidence interval for \(\theta\). 
 \end{itemize}
 
+%' ============================================================================================================================================================
+\section{Question 12} \noindent
 
 
 \end{document}
