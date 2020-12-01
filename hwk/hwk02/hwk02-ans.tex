@@ -37,7 +37,25 @@
 
 %' ============================================================================================================================================================
 \section{Question 1} \noindent
-
+Suppose that \(Y \sim \mathrm{Bin}(100,p)\), and we want to make an inference about the value of \(p\). We test \(H_0 : p = 0.08\) against \(H_A : p < 0.08\),
+and our test \(\delta\) will reject \(H_0\) if and only if \(Y = 6\).
+\begin{itemize}
+    \item[(a)] The significance \(\alpha\) is the probability of making a Type I error, 
+    \begin{align*}
+        \alpha(\delta)
+        = \mathrm{Pr}(Y = 6 \,|\, p = 0.08)
+        = \binom{100}{6} (0.08)^6 (0.92)^{94}
+        = 0.1232795.
+    \end{align*}
+    \item[(b)] Suppose that \(p = 0.04\). The probability of a Type II error, \(\beta\), is
+    \begin{align*}
+        \beta(\delta)
+        = \mathrm{Pr}(Y \neq 6 \,|\, p = 0.04)
+        = 1 - \mathrm{Pr}(Y = 6 \,|\, p = 0.04)
+        = 1 - \binom{100}{6} (0.04)^6 (0.96)^{94}
+        = 0.8947672.
+    \end{align*}
+\end{itemize}
 
 %' ============================================================================================================================================================
 \section{Question 9} \noindent
