@@ -57,6 +57,25 @@ and our test \(\delta\) will reject \(H_0\) if and only if \(Y = 6\).
     \end{align*}
 \end{itemize}
 
+\newcommand{\zgam}{z_{\gamma}}
+%' ============================================================================================================================================================
+\section{Question 2} \noindent
+For a random variable \(Y \sim \mathrm{Binom}(n, p)\), if \(n\) is large enough we can approximate it using a normal distribution with the same mean and 
+variance, i.e. \(Y \sim \mathrm{N}(np, np(1-p))\). Then the sample proportion, \(\hat{p} = Y / n\), is also normally distributed as 
+\(\hat{p} \sim \mathrm{N}(p, p(1-p)/n)\), and standardizing \(\hat{p}\) gives us \((\hat{p} - p) / \sqrt{p(1-p)/n} \sim \mathrm{N}(0,1)\). 
+% maybe put derivation in appendix?
+It can then be shown that a \(100\gamma\)\%{} confidence interval for \(\hat{p}\) is given by 
+\begin{align*}
+    \mathcal{I}
+    = \left( ~ 
+    \frac{\hat{p} + \zgam^2 / 2n}{1 + \zgam^2 / 2n} - \zgam \cdot \frac{\sqrt{\hat{p}(1 - \hat{p}) / n + \zgam^2 / 4n^2}}{1 + \zgam^2 / n} 
+    ~,~ 
+    \frac{\hat{p} + \zgam^2 / 2n}{1 + \zgam^2 / 2n} + \zgam \cdot \frac{\sqrt{\hat{p}(1 - \hat{p}) / n + \zgam^2 / 4n^2}}{1 + \zgam^2 / n}
+    ~ \right),
+\end{align*}
+where \(\zgam = \Phi^{-1}((1 + \gamma)/2)\). For this example, we have \(n = 300\) and \(\hat{p} = 75 / 300 = 1/4\), and to get a \(90\)\%{}
+confidence interval, we have \(z_{0.90} = \). Therefore, a \(90\)\%{} confidence interval for \(p\) is 
+
 %' ============================================================================================================================================================
 \section{Question 9} \noindent
 If \(\bm{X} \overset{\mathrm{iid}}{\sim} \mathrm{N}(\mu, \sigma^2)\) with unknown \(\mu\) and \(\sigma^2\), then a \(\gamma\)\%{} confidence interval
