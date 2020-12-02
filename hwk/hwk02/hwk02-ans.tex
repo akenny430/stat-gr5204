@@ -369,13 +369,15 @@ With the value of \(c\) determined, the power function is then given by
     % = 1 - \Phi \big(  \sqrt{n}(\varphi - \theta) + z_{\pi_*} \big).
     = 1 - \Phi \big(  \sqrt{n}(\varphi - \theta) + z_{\pi_*} \big).
 \end{align*}
-Looking at the derivative of \(\pi(\theta \,|\, \delta^*)\), we have 
-\begin{align*}
-    \frac{\partial \pi(\theta \,|\, \delta^*)}{\partial \theta}
-    = \sqrt{\frac{n}{2\pi}} \cdot \mathrm{exp} \left( - \frac{n(\varphi - \theta)^2 + 2 k \sqrt{n}(\varphi - \theta) + k^2}{2} \right)
-    > 0,
-\end{align*}
-which indicates that the power function is striclty increasing and will be maximized at the largest possible value over an interval. 
+% Looking at the derivative of \(\pi(\theta \,|\, \delta^*)\), we have 
+% \begin{align*}
+%     \frac{\partial \pi(\theta \,|\, \delta^*)}{\partial \theta}
+%     = \sqrt{\frac{n}{2\pi}} \cdot \mathrm{exp} \left( - \frac{n(\varphi - \theta)^2 + 2 k \sqrt{n}(\varphi - \theta) + k^2}{2} \right)
+%     > 0,
+% \end{align*}
+Since \(\pi( \theta\,|\, \delta^*)\) is a montone increasing function of \(\theta\),
+% which indicates that the power function is striclty increasing and 
+it will be maximized at the largest possible value over an interval. 
 Therefore, the significance of this test is 
 \begin{align*}
     \alpha(\delta^*)
@@ -389,5 +391,9 @@ The question specifically asks for \(c\) and \(\alpha\) when \(\theta_* = 0\), \
 if we have a random sample \(\bm{X} \overset{\mathrm{iid}}{\sim} \mathrm{N}(\theta,1)\), and want to test \(H_0 : \theta \le 0\) against \(H_A : \theta > 0\)
 using a UMP test with a power of \(0.95\) at \(\theta = 1\), then our test is given by \(\delta^* :\) reject \(H_0\) if \(\bar(X) \ge 0.589\). 
 With 16 observations, the size of this test is \(\alpha = 0.00926\). 
+
+%' ============================================================================================================================================================
+\section{Question 14} \noindent
+
 
 \end{document}
