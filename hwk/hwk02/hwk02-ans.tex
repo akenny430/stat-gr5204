@@ -134,6 +134,29 @@ The values of \(\pi(\theta\,|\,\delta)\) when \(\theta = \{1/2,1/3,1/4,1/6,1/12\
 The significance of this test is given by \(\alpha(\delta) = \pi(1/2 \,|\, \delta) = 0.062\).
 
 %' ============================================================================================================================================================
+\section{Question 7} \noindent
+Let \(X_1, \ldots, X_n \overset{\mathrm{iid}}{\sim} \mathrm{Unif}(0, \theta)\), where \(\theta\) is unknown, and let \(Y_1, \ldots, Y_n\) be the \(n\)
+order statistics of the random sample. We are testing \(H_0 : \theta = 1\) against \(H_A : \theta > 1\) with procedure
+\(\delta :\) reject \(H_0\) if \(Y_n \ge c\), where \(c\) is an unknown constant that will be determined by the significance of \(\delta\). 
+If \(Y_n\) is the \(n\)th order statistic of \(\bm{X}\), its cdf and density are respectively given by \(F_{Y_n}(y_n) = (y_n / \theta)^n\)
+and \(f_{Y_n}(y_n) = n y_n^{n-1} / \theta^n\) for \(y_n \in [0, \theta]\). 
+\begin{itemize}
+    \item[(b)] The rejection region of \(Y_n\) is \(\mathcal{S}_{Y_n} = [c, \theta]\), and so the power function is given by 
+    \begin{align*}
+        \pi(\theta \,|\, \delta)
+        = \mathrm{Pr}(Y_n \in \mathcal{S}_{Y_n} \,|\, \theta)
+        = F_{Y_n}(\theta) - F_{Y_n}(c)
+        = 1 - \frac{c^n}{\theta^n}.
+    \end{align*}
+    \item[(a)] To have a significance level of \(\alpha = 0.05\), we must have \(\alpha(\delta) = \pi(1 \,|\, \delta) = 1 - c^n \overset{\mathrm{set}}{=} 0.05\), 
+    and solving for \(c\) gives us \(c = \sqrt[n]{0.95}\), and the power function with this level of significance is 
+    \(\pi(\theta \,|\, \delta) = 1 - 0.95 / \theta^n\). 
+    The question specifically asks for \(n = 4\), in which case \(c = \sqrt[4]{0.95}\) and \(\pi(\theta \,|\, \delta) = 1 - 0.95 / \theta^4\).
+    More generally, for any specified significance level \(\alpha_*\), we will have 
+    \(c = \sqrt[n]{1 - \alpha_*}\) and \(\pi(\theta \,|\, \delta) = 1 - (1 - \alpha_*) / \theta^n\). 
+\end{itemize}
+
+%' ============================================================================================================================================================
 \section{Question 9} \noindent
 If \(\bm{X} \overset{\mathrm{iid}}{\sim} \mathrm{N}(\mu, \sigma^2)\) with unknown \(\mu\) and \(\sigma^2\), then a \(\gamma\)\%{} confidence interval
 for \(\mu\) is given by 
