@@ -14,4 +14,4 @@ test_info <- function(theta_hyp, theta0, power_at_theta0, n) {
 }
 
 pars <- test_info(0, 1, 0.95, 16)
-purrr::map_dbl(.x = pars, .f = ~round(., 3))
+purrr::map_dbl(.x = pars, .f = ~signif(., 3))
