@@ -156,12 +156,12 @@ and so \(\mathrm{Var}[\varphi(Y_1)] = \mathbb{E}[\varphi(Y_1)^2] - \mathbb{E}[\v
 
 %' ============================================================================================================================================================
 \section{Question 6} \noindent
-\begin{wrapfigure}{r}{0.45\textwidth}
-    \centering
-    \includegraphics[width = 0.4\textwidth]{img/q06-power-function.png}
-    \caption{The power function \(\pi(\theta \,|\, \delta)\).}
-    \label{q06-power-function}
-\end{wrapfigure}
+% \begin{wrapfigure}{r}{0.45\textwidth}
+%     \centering
+%     \includegraphics[width = 0.4\textwidth]{img/q06-power-function.png}
+%     \caption{The power function \(\pi(\theta \,|\, \delta)\).}
+%     \label{q06-power-function}
+% \end{wrapfigure}
 Suppose that \(\bm{X} \overset{\mathrm{iid}}{\sim} \mathrm{Poisson}( \theta)\). We test \(H_0 : \theta = 1/2\) against \(H_A : \theta < 1/2\) using 
 our procedure \(\delta :\) reject \(H_0\) if the test statistic \(Y = \mathbf{1}^T \bm{X} = \sum X_i \le 2\). Since it is a sum of independent Poisson random 
 variables, our test statistic is also a Poisson random variable, namely \(Y \sim \mathrm{Poisson}(n \theta)\), and the rejection region for \(Y\) is 
@@ -171,12 +171,12 @@ variables, our test statistic is also a Poisson random variable, namely \(Y \sim
     = \mathrm{Pr}(Y \in \mathcal{S}_Y \,|\, \theta)
     = \sum_{k=0}^2 \frac{(n\theta)^k \mathrm{e}^{-n\theta}}{k!}.
 \end{align*}
-% \begin{figure}
-%     \centering
-%     \includegraphics[width = 0.45\textwidth]{img/q06-power-function.png}
-%     \caption{The power function \(\pi(\theta \,|\, \delta)\).}
-%     \label{q06-power-function}
-% \end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width = 0.45\textwidth]{img/q06-power-function.png}
+    \caption{The power function \(\pi(\theta \,|\, \delta)\).}
+    \label{q06-power-function}
+\end{figure}
 A graph of \(\pi(\theta\,|\,\delta)\) can be found in Figure \ref{q06-power-function}.
 % , where we can see the maximum value occurs as \(\theta \to 0\). 
 The values of \(\pi(\theta\,|\,\delta)\) when \(\theta = \{1/2,1/3,1/4,1/6,1/12\}\) are given by 
