@@ -74,11 +74,11 @@ It can then be shown that a \(100\gamma\)\%{} confidence interval for \(\hat{p}\
     ~ \right),
 \end{align*}
 where \(\zgam = \Phi^{-1}((1 + \gamma)/2)\). For this example, we have \(n = 300\) and \(\hat{p} = 75 / 300 = 1/4\), and to get a \(90\)\%{}
-confidence interval, we have \(z_{0.90} = 1.645\). Therefore, a \(90\)\%{} confidence interval for \(p\) is \((0.212, 0.294)\).
+confidence interval, we have \(\zgam = 1.645\). Therefore, a \(90\)\%{} confidence interval for \(p\) is \((0.212, 0.294)\).
 
 %' ============================================================================================================================================================
 \section{Question 3} \noindent
-Suppose we have a random sample \(\bm{X} \sim \mathrm{Gamma}(4, \beta)\), so \(\mathbb{E}[X_i] = 4\beta\) and \(\mathrm{Var}[X_i] = 4 \beta^2\). The expected 
+Suppose we have a random sample \(\bm{X} \overset{\mathrm{iid}}{\sim} \mathrm{Gamma}(4, \beta)\), so \(\mathbb{E}[X_i] = 4\beta\) and \(\mathrm{Var}[X_i] = 4 \beta^2\). The expected 
 value and variance of the sample mean \(\bar{X}\) is then given by \(\mathbb{E}[\bar{X}] = 4 \beta\) and \(\mathrm{Var}[\bar{X}] = 4 \beta^2 / n\), and from 
 the CLT we have \(\sqrt{n}(\bar{X} - 4 \beta) / 2 \beta = \sqrt{n}(\bar{X} / 2 \beta - 2) \sim \mathrm{N}(0, 1)\). If \(\zgam = \Phi^{-1}((1 + \gamma) / 2)\),
 then we have \(\gamma = \mathrm{Pr} (-\zgam \le \sqrt{n}(\bar{X} / 2 \beta - 2 \le \zgam)\). Rearranging to get \(\beta\) in the middle gives us 
@@ -106,7 +106,7 @@ reject \(H_0\) if \(X \le 3\). That is, our rejection region is \(\mathcal{S}_X 
 
 %' ============================================================================================================================================================
 \section{Question 6} \noindent
-
+Suppose that \(\bm{X} \overset{\mathrm{iid}}{\sim} \mathrm{Poisson}( \theta)\). 
 
 %' ============================================================================================================================================================
 \section{Question 9} \noindent
