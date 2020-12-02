@@ -28,4 +28,7 @@ ggplot(
   theme_bw(base_size = 30)
 ggsave("hwk/hwk02/img/q08-power-function.png")
 
+
+
+
 rm(list = ls())
