@@ -11,7 +11,7 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{titlesec}
 
-
+\usepackage{wrapfig}
 
 % \titleformat{\section}{\normalsize\bfseries}{\thesection}{1em}{}
 \titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
@@ -106,7 +106,31 @@ reject \(H_0\) if \(X \le 3\). That is, our rejection region is \(\mathcal{S}_X 
 
 %' ============================================================================================================================================================
 \section{Question 6} \noindent
-Suppose that \(\bm{X} \overset{\mathrm{iid}}{\sim} \mathrm{Poisson}( \theta)\). 
+\begin{wrapfigure}{r}{0.5\textwidth}
+    \centering
+    \includegraphics[width = 0.45\textwidth]{img/q06-power-function.png}
+    \caption{The power function \(\pi(\theta \,|\, \delta)\).}
+    \label{q06-power-function}
+\end{wrapfigure}
+Suppose that \(\bm{X} \overset{\mathrm{iid}}{\sim} \mathrm{Poisson}( \theta)\). We test \(H_0 : \theta = 1/2\) against \(H_A : \theta < 1/2\) using 
+our procedure \(\delta :\) reject \(H_0\) if the test statistic \(Y = \mathbf{1}^T \bm{X} = \sum X_i \le 2\). Since it is a sum of independent Poisson random 
+variables, our test statistic is also a Poisson random variable, namely \(Y \sim \mathrm{Poisson}(n \theta)\), and the rejection region for \(Y\) is 
+\(\mathcal{S}_Y = \{0,1,2\}\). Therefore, for \(\theta \in (0,1/2]\), the power function of \(\delta\) is given by 
+\begin{align*}
+    \pi(\theta \,|\, \delta)
+    = \mathrm{Pr}(Y \in \mathcal{S}_Y \,|\, \theta)
+    = \sum_{k=0}^2 \frac{(n\theta)^k \mathrm{e}^{-n\theta}}{k!}.
+\end{align*}
+% \begin{wrapfigure}{R}{0.5\textwidth}
+%     \centering
+%     \includegraphics[width = 0.45\textwidth]{img/q06-power-function.png}
+%     \caption{The power function \(\pi(\theta \,|\, \delta)\).}
+%     \label{q06-power-function}
+% \end{wrapfigure}
+A graph of \(\pi(\theta\,|\,\delta)\) can be found in Figure \ref{q06-power-function}.
+% , where we can see the maximum value occurs as \(\theta \to 0\). 
+The values of \(\pi(\theta\,|\,\delta)\) when \(\theta = \{1/2,1/3,1/4,1/6,1/12\}\) are given by 
+\(0.062, 0.238, 0.423, 0.677, 0.920\), and have also been marked on Figure \ref{q06-power-function}.
 
 %' ============================================================================================================================================================
 \section{Question 9} \noindent
