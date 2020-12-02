@@ -16,6 +16,14 @@ ggplot(
   aes(theta)
 ) +
   geom_function(fun = power_fun, args = list(n = 12), color = myred, lwd = 2) +
+  geom_point(
+    data = data.table(
+      theta = c(1/2, 1/3, 1/4, 1/6, 1/12)
+    )[
+      , power := power_fun(theta, 12)
+    ],
+    aes(theta, power), color = myred, cex = 5
+  ) +
   labs(x = expression(theta), y = expression(pi(theta , delta))) +
   theme_bw(base_size = 30)
 ggsave("hwk/hwk02/img/q06-power-function.png")
