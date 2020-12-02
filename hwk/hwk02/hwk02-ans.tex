@@ -90,6 +90,17 @@ For this random sample, \(n = 25\), and because we want a \(95.4\)\%{} confidenc
 is given by \(\mathcal{I} = \big( ~ 5 \bar{X} / 6 ~,~ 5 \bar{X} / 4 ~ \big)\). 
 
 %' ============================================================================================================================================================
+\section{Question 4} \noindent
+Suppose that \(X \sim \mathrm{Binom}(100, p)\), where \(p \in (1/4, 1/2)\) is unknown. We test \(H_0 : 1/2\) against \(H_A : p = 1/4\) using \(\delta :\) 
+reject \(H_0\) if \(X \le 3\). That is, our rejection region is \(\mathcal{S} = \{0,1,2,3\}\), and so the power function for this test is 
+\begin{align*}
+    \pi(p \,|\, \delta)
+    = \mathrm{Pr}(X \in \mathcal{S} \,|\, p)
+    = \sum_{k=0}^3 \binom{10}{k} p^k (1 - p)^{n - k}.
+    % = (1 - p)^{10} + 10 p (1 - p)^9 + 45 p^2 (1 - p)^8 + 120 p^3 (1 - p)^7.
+\end{align*}
+
+%' ============================================================================================================================================================
 \section{Question 9} \noindent
 If \(\bm{X} \overset{\mathrm{iid}}{\sim} \mathrm{N}(\mu, \sigma^2)\) with unknown \(\mu\) and \(\sigma^2\), then a \(\gamma\)\%{} confidence interval
 for \(\mu\) is given by 
