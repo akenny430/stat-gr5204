@@ -175,7 +175,18 @@ is \(\alpha = 0.025\).
     \overset{\mathrm{set}}{=} 0.025.
 \end{align*}
 There is no way to derive a closed form relationship between \(c\) and \(\alpha\) like we did in question 7, but using \texttt{R} we can write a function 
-to find the value of \(c\) for a given significance value \(\alpha\). When \(n = 13\) and \(\alpha = 0.025\), we have \(c = 23.337\). 
+to find the value of \(c\) for a given significance value \(\alpha\). When \(n = 13\) and \(\alpha = 0.025\), we have \(c = 23.337\). To find a general 
+formula of \(\pi(\sigma^2 \,|\, \delta)\), we notice that if \(T(\bm{X}) \ge c\), then \(S^2 \ge c \sigma^2_0 / n\), which serives as a rejection region for 
+\(S^2\). Since \(n S^2 \ \sigma^2 \chi^2(n-1)\) for any value of \(\sigma^2\), it can be shown that \(S^2 \sim \mathrm{Gamma}\big( (n-1)/2, n / 2 \sigma^2\big)\).
+Therefore, the power function is given by 
+\begin{align*}
+    \pi(\sigma^2 \,|\, \delta)
+    = \mathrm{Pr} (S^2 \ge c \sigma^2_0 / n \,|\, \sigma^2)
+    = \int_{c\sigma^2_0 / n}^{\infty} \frac{x^{(n - 3)/2} \cdot \mathrm{e}^{- nx/2 \sigma^2}}{\big( n / 2 \sigma^2 \big)^{(n-1)/2} \Gamma \big( (n-1)/2 \big)} \;\partial x,
+\end{align*}
+where \(c\) is chosen to make \(\alpha(\delta) = 0.025\) (or any specified value, for that matter). Again, there is no closed form solution to this function,
+but using \texttt{R} we can find its values, and given a specified value of \(\sigma^2_0\), we will always have \(\pi(\sigma^2_0 \,|\, \delta) = \alpha\)
+as desired. 
 
 %' ============================================================================================================================================================
 \section{Question 9} \noindent
