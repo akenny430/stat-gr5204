@@ -8,11 +8,14 @@ power_fun <- function(theta, n) {
   return(val)
 }
 
+power_vals <- power_fun(c(1/2, 1/3, 1/4, 1/6, 1/12), 12)
+round(power_vals, 3)
+
 ggplot(
   data.table(theta = seq(0.01, 0.5, 0.01)),
   aes(theta)
 ) +
-  geom_function(fun = power_fun, args = list(n = 25), color = myred, lwd = 2) +
+  geom_function(fun = power_fun, args = list(n = 12), color = myred, lwd = 2) +
   labs(x = expression(theta), y = expression(pi(theta , delta))) +
   theme_bw(base_size = 30)
 ggsave("hwk/hwk02/img/q06-power-function.png")
