@@ -76,7 +76,18 @@ It can then be shown that a \(100\gamma\)\%{} confidence interval for \(\hat{p}\
 where \(\zgam = \Phi^{-1}((1 + \gamma)/2)\). For this example, we have \(n = 300\) and \(\hat{p} = 75 / 300 = 1/4\), and to get a \(90\)\%{}
 confidence interval, we have \(z_{0.90} = 1.645\). Therefore, a \(90\)\%{} confidence interval for \(p\) is \((0.212, 0.294)\).
 
-
+%' ============================================================================================================================================================
+\section{Question 3} \noindent
+Suppose we have a random sample \(\bm{X} \sim \mathrm{Gamma}(4, \beta)\), so \(\mathbb{E}[X_i] = 4\beta\) and \(\mathrm{Var}[X_i] = 4 \beta^2\). The expected 
+value and variance of the sample mean \(\bar{X}\) is then given by \(\mathbb{E}[\bar{X}] = 4 \beta\) and \(\mathrm{Var}[\bar{X}] = 4 \beta^2 / n\), and from 
+the CLT we have \(\sqrt{n}(\bar{X} - 4 \beta^2) / 2 \beta = \sqrt{n}(\bar{X} / 2 \beta - 2) \sim \mathrm{N}(0, 1)\). If \(\zgam = \Phi^{-1}((1 + \gamma) / 2)\),
+then we have \(\gamma = \mathrm{Pr} (-\zgam \le \sqrt{n}(\bar{X} / 2 \beta - 2 \le \zgam)\). Rearranging to get \(\beta\) in the middle gives us 
+\begin{align*}
+    \mathcal{I}
+    = \left( ~ \frac{\bar{X}}{4(1 + \zgam / \sqrt{n})} ~,~ \frac{\bar{X}}{4(1 - \zgam / \sqrt{n})} ~ \right).
+\end{align*}
+For this random sample, \(n = 25\), and because we want a \(95.4\)\%{} confidence interval (oddly specific), we have \(\zgam = 2\), so the confidence interval 
+is given by \(\mathcal{I} = ( ~ 5\bar{X} / 28 ~,~ 5 \bar{X} / 12 ~)\). 
 
 %' ============================================================================================================================================================
 \section{Question 9} \noindent
