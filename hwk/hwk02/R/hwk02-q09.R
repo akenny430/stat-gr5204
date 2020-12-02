@@ -6,3 +6,7 @@ while (exp_width >= 1/8) {
   exp_width <- qt(p = (1 + gamma) / 2, df = n - 1)^2 / n
 }
 print(n)
+
+
+
+rm(list = ls())
