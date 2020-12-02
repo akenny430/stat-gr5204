@@ -339,4 +339,55 @@ Suppose that \(X \sim \mathrm{P}\), where \(\mathrm{P}\) is an unknown distribut
 
 %Determine the most powerful test of size 0.01, and calculate the power of the test when H1 is true.
 
+%' ============================================================================================================================================================
+\section{Question 13} \noindent
+Suppose that \(\bm{X} \overset{\mathrm{iid}}{\sim} N(\theta, 1)\), where \(\theta > 1\) is unknown, and we wish to test 
+\(H_0 : \theta \le \theta_*\) against \(H_A : \theta > \theta_*\) using some UMP test \(\delta^*\). 
+% More specifically, the power of this test is 0.95 when \(\theta = 1\), i.e. \(\pi(1 \,|\, \delta^*) = 0.95\). 
+More specifically, we want our UMP test to have some pre-determined power \(\pi_*\) at a given mean \(\varphi\), i.e. \(\pi(\varphi \,|\, \delta^*) = \pi_*\).
+Since we are sampling from a normal distribution, the joint distribution of \(\bm{X}\) has increasing montone likelihood ratio 
+in the test statistic \(\bar{X}\), where \(\bar{X} \sim \mathrm{N}(\theta, 1 / n)\), so our UMP test is given by \(\delta^* : \) reject 
+\(H_0\) if \(\bar{X} \ge c\). 
+We also notice that \(\sqrt{n}(\bar{X} - \theta) \coloneqq Z_{\theta} \sim \mathrm{N}(0,1)\). 
+The rejection region for \(\bar{X} = \mathcal{S}_{\bar{X}} = [c,\infty)\), so to find \(c\) we have 
+% Since we need \(\pi (1 \,|\, \delta^*) = 0.95\), we have 
+% More generally, if we want our UMP test to have some pre-determined power \(\pi_*\) at a given mean \(\varphi\), 
+\begin{align*}
+    \pi (\varphi \,|\, \delta^*)
+    = \mathrm{Pr}(\bar{X} \ge c \,|\, \theta = \varphi)
+    % = \mathrm{Pr} \big( \sqrt{n}(\bar{X} - \varphi) \ge \sqrt{n}(c - \varphi) \big)
+    = \mathrm{Pr} \big( Z_{\varphi} \ge \sqrt{n}(c - \varphi) \big)
+    = 1 - \Phi \big( \sqrt{n}(c - \varphi) \big)
+    \overset{\mathrm{set}}{=} \pi_*.
+\end{align*}
+From here, we have \(\sqrt{n}(c - \varphi) = \Phi^{-1}(1 - \pi_*) \coloneqq z_{\pi_*}\), and so \(c = \varphi + z_{\pi_*} / \sqrt{n}\).
+With the value of \(c\) determined, the power function is then given by 
+\begin{align*}
+    \pi(\theta \,|\, \delta^*)
+    = \mathrm{Pr} \big( \bar{X} \ge \varphi + z_{\pi_*} / \sqrt{n} \,|\, \theta \big)
+    = \mathrm{Pr} \big( Z_{\theta} \ge \sqrt{n}(\varphi - \theta) + z_{\pi_*} \big)
+    % = 1 - \Phi \big(  \sqrt{n}(\varphi - \theta) + z_{\pi_*} \big).
+    = 1 - \Phi \big(  \sqrt{n}(\varphi - \theta) + z_{\pi_*} \big).
+\end{align*}
+Looking at the derivative of \(\pi(\theta \,|\, \delta^*)\), we have 
+\begin{align*}
+    \frac{\partial \pi(\theta \,|\, \delta^*)}{\partial \theta}
+    = \sqrt{\frac{n}{2\pi}} \cdot \mathrm{exp} \left( - \frac{n(\varphi - \theta)^2 + 2 k \sqrt{n}(\varphi - \theta) + k^2}{2} \right)
+    > 0,
+\end{align*}
+which indicates that the power function is striclty increasing and will be maximized at the largest possible value over an interval. 
+Therefore, the significance of this test is 
+\begin{align*}
+    \alpha(\delta^*)
+    = \sup_{\theta \le \theta_*} \pi(\theta \,|\, \delta^*)
+    % = \underset{\theta \le \theta_*}{\mathrm{sup}} \pi(\theta \,|\, \delta^*)
+    = \pi(\theta_* \,|\, \delta^*)
+    = 1 - \Phi \big(  \sqrt{n}(\varphi - \theta_*) + z_{\pi_*} \big).
+\end{align*}
+The question specifically asks for \(c\) and \(\alpha\) when \(\theta_* = 0\), \(\varphi = 1\), \(\pi_* = 0.95\), and \(n = 16\). In this case, we have 
+\(z_{\pi_*} = \Phi^{-1}(0.05) \approx -1.64\), which means \(c = 1 - 1.64 / 4 = 0.589\) and \(\alpha = 1 - \Phi(4 - 1.64) = 0.00926\). Put more formally,
+if we have a random sample \(\bm{X} \overset{\mathrm{iid}}{\sim} \mathrm{N}(\theta,1)\), and want to test \(H_0 : \theta \le 0\) against \(H_A : \theta > 0\)
+using a UMP test with a power of \(0.95\) at \(\theta = 1\), then our test is given by \(\delta^* :\) reject \(H_0\) if \(\bar(X) \ge 0.589\). 
+With 16 observations, the size of this test is \(\alpha = 0.00926\). 
+
 \end{document}
