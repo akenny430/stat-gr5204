@@ -157,6 +157,27 @@ and \(f_{Y_n}(y_n) = n y_n^{n-1} / \theta^n\) for \(y_n \in [0, \theta]\).
 \end{itemize}
 
 %' ============================================================================================================================================================
+\section{Question 8} \noindent
+Let \(\bm{X} \overset{\mathrm{iid}}{\sim} \mathrm{N}(\mu, \sigma^2)\), where both \(\mu\) and \(\sigma^2\) are unknown. We want to test 
+\(H_0 : \sigma^2 = \sigma^2_0\) against \(H_A : \sigma^2 > \sigma^2_0\) using procedure \(\delta :\) reject \(H_0\) if \(nS^2/\sigma^2_0 \ge c\), where \(c\) 
+will be determined by the significance of the test. 
+Our test statistic is based off of \(S^2 = \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})^2\), and we know that \(T(\bm{X}) \coloneqq nS^2 / \sigma^2_0 \sim \chi^2(n-1)\). 
+The rejection region for our test statistic is \(\mathcal{S}_{T(\bm{X})} = [c, \infty)\), and we would like to find a value of \(c\) such that the significance
+is \(\alpha = 0.025\). 
+\begin{align*}
+    \alpha(\delta)
+    = \pi(\sigma^2_0 \,|\, \delta)
+    = \mathrm{Pr} \big( T(\bm{X}) \in \mathcal{S}_{T(\bm{X})} \,|\, \sigma^2_0 \big)
+    % = \int_c^{\infty} f(t) \;\partial t
+    % = \int_c^{\infty} \frac{1}{2^{\frac{n-1}{2}} \Gamma \left( \frac{n-1}{2} \right)} \cdot t^{\frac{n-3}{2}} \cdot \mathrm{e}^{-t/2} \;\partial t
+    % = \int_c^{\infty} \frac{1}{2^{(n-1)/2} \Gamma \left( (n-1)/2 \right)} \cdot t^{(n-3)/2} \cdot \mathrm{e}^{-t/2} \;\partial t
+    = \int_c^{\infty} \frac{t^{(n-3)/2} \cdot \mathrm{e}^{-t/2}}{2^{(n-1)/2} \Gamma \left( (n-1)/2 \right)} \;\partial t
+    \overset{\mathrm{set}}{=} 0.025.
+\end{align*}
+There is no way to derive a closed form relationship between \(c\) and \(\alpha\) like we did in question 7, but using \texttt{R} we can write a function 
+to find the value of \(c\) for a given significance value \(\alpha\). When \(n = 13\) and \(\alpha = 0.025\), we have \(c = 23.337\). 
+
+%' ============================================================================================================================================================
 \section{Question 9} \noindent
 If \(\bm{X} \overset{\mathrm{iid}}{\sim} \mathrm{N}(\mu, \sigma^2)\) with unknown \(\mu\) and \(\sigma^2\), then a \(\gamma\)\%{} confidence interval
 for \(\mu\) is given by 
