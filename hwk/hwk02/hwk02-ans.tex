@@ -177,7 +177,7 @@ is \(\alpha = 0.025\).
 There is no way to derive a closed form relationship between \(c\) and \(\alpha\) like we did in question 7, but using \texttt{R} we can write a function 
 to find the value of \(c\) for a given significance value \(\alpha\). When \(n = 13\) and \(\alpha = 0.025\), we have \(c = 23.337\). To find a general 
 formula of \(\pi(\sigma^2 \,|\, \delta)\), we notice that if \(T(\bm{X}) \ge c\), then \(S^2 \ge c \sigma^2_0 / n\), which serives as a rejection region for 
-\(S^2\). Since \(n S^2 \ \sigma^2 \chi^2(n-1)\) for any value of \(\sigma^2\), it can be shown that \(S^2 \sim \mathrm{Gamma}\big( (n-1)/2, n / 2 \sigma^2\big)\).
+\(S^2\). Since \(n S^2 / \sigma^2 \sim \chi^2(n-1)\) for any value of \(\sigma^2\), it can be shown that \(S^2 \sim \mathrm{Gamma}\big( (n-1)/2, n / 2 \sigma^2\big)\).
 Therefore, the power function is given by 
 \begin{align*}
     \pi(\sigma^2 \,|\, \delta)
