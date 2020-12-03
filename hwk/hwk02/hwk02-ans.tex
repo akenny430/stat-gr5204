@@ -334,10 +334,46 @@ Let \(\bm{X} \overset{\mathrm{iid}}{\sim} \mathrm{Unif}(0, \theta)\), where \(\t
 %' ============================================================================================================================================================
 \section{Question 12} \noindent
 Suppose that \(X \sim \mathrm{P}\), where \(\mathrm{P}\) is an unknown distribution, and we want to test \(H_0: \mathrm{P} = \mathrm{Unif}(0,1)\) against 
-\(H_1: \mathrm{P} = \mathrm{N}(0, 1)\). The densities of both distributions (within their support) are given by \(f_0(x) = 1\) for \(x \in [0,1]\) and 
-\(f_2(x) = (2\pi)^{-1/2}\mathrm{exp}(-x^2 / 2)\), respectively, and so our test statistics is 
-
-%Determine the most powerful test of size 0.01, and calculate the power of the test when H1 is true.
+\(H_A: \mathrm{P} = \mathrm{N}(0, 1)\). The densities of both distributions (within their support) are given by \(f(x \,|\, P_0) = 1\) for \(x \in [0,1]\) and 
+\(f(x \,|\, P_A) = (2\pi)^{-1/2}\mathrm{exp}(-x^2 / 2)\) for \(x \in \mathbb{R}\), respectively, and so the likelihood ratio is given by 
+\begin{align*}
+    \ell(x)
+    = \frac{f(x \,|\, P_A)}{f(x \,|\, P_0)}
+    = \begin{cases}
+        \phi(x) & \text{if } x \in [0,1] \\
+        \hfil \infty  & \text{if } x \not \in [0,1],
+    \end{cases}
+\end{align*}
+where \(\phi(x)\) is the standard normal density. As a result, we will reject \(H_0\) if \(\ell(X) \ge k\), and so the power function is given by 
+\(\pi(P \,|\, \delta) = \mathrm{Pr}(\ell(X) \ge k \,|\, P)\). We note that if \(H_0\) is true, then we will always have \(x \in [0,1]\), since 
+we would be sampling from \(\mathrm{Unif}(0,1)\), so in this case \(\ell(x) = \phi(x)\). 
+We also note that \(\phi(x)\) is a decreasing function on this interval. As a result, the significance of this test is 
+\begin{align*}
+    \alpha(\delta)
+    = \pi(P_0 \,|\, \delta)
+    = \mathrm{Pr}(\ell(X) \ge k \,|\, P_0)
+    = \mathrm{Pr}(\phi(X) \ge k)
+    = \mathrm{Pr}(X \le c)
+    = F_0(c)
+    \overset{\mathrm{set}}{=} 0.01
+\end{align*}
+where \(c = \phi^{-1}(k)\) and \(F_0(c)\) is the cdf of \(\mathrm{Unif}(0,1)\). As a result, \(c = 0.01\) gives us a test with significance \(0.01\). 
+More generally, since \(\phi(X) > k\) for any value of \(k\) (and thus any level of significance), we will always reject \(H_0\) when \(X \not \in [0,1]\), 
+which makes the power function 
+\begin{align*}
+    \pi(P \,|\, \delta)
+    &= \mathrm{Pr}\big(\phi(X) \ge \phi(0.01) \,|\, P\big) \\
+    &= \mathrm{Pr}\big(X < 0 \cup X \le 0.01 \cup X > 1 \,|\, P\big)
+    % = \mathrm{Pr}\big(0.01 \le X < 1 \,|\, P\big).
+    = \mathrm{Pr} \big( X \le 0.01 \,|\, P \big) + \big( X > 1 \,|\, P \big)
+\end{align*}
+Therefore, when \(H_A\) is true, the power of \(\delta\) is 
+\begin{align*}
+    \pi(P_A \,|\, \delta)
+    = \mathrm{Pr} \big( X \le 0.01 \,|\, P_A \big) + \big( X > 1 \,|\, P_A \big)
+    = \Phi(0.01) + 1 - \Phi(1)
+    = 0.663.
+\end{align*}
 
 %' ============================================================================================================================================================
 \section{Question 13} \noindent
