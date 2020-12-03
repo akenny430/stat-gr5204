@@ -327,8 +327,8 @@ Let \(\bm{X} \overset{\mathrm{iid}}{\sim} \mathrm{Unif}(0, \theta)\), where \(\t
     \end{align*}
     and so the bias is \(\mathrm{bias}(Y) = \mathbb{E}[Y] - \theta = -\theta / (n+1)\). 
     \item[(d)] Using the cdf of \(Y / \theta\), for any interval involving \(Y / \theta\), we have \(\mathrm{Pr}(a \le Y / \theta \le b) = b^n - a^n\), where 
-    \(a, b \in (0, 1]\). Rearranging the terms inside the interval gives us \(\mathrm{Pr}(Y / b \le \theta \le Y / a) = b^2 - a^2 \overset{\mathrm{set}}{=} \gamma\).
-    That is, as long as we impose the constraint that \(b^2 - a^2 = \gamma\), any interval \((Y/b, Y/a)\) is a \(\gamma\)\%{} confidence interval for \(\theta\). 
+    \(a, b \in (0, 1]\). Rearranging the terms inside the interval gives us \(\mathrm{Pr}(Y / b \le \theta \le Y / a) = b^n - a^n \overset{\mathrm{set}}{=} \gamma\).
+    That is, as long as we impose the constraint that \(b^n - a^n = \gamma\), any interval \((Y/b, Y/a)\) is a \(100\gamma\)\%{} confidence interval for \(\theta\). 
 \end{itemize}
 
 %' ============================================================================================================================================================
