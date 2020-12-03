@@ -29,7 +29,7 @@
     {\normalsize STAT GR5204: Statistical Inference}\\
     {\normalsize Columbia University}
 }
-\date{\normalsize Novermber 26, 2020}
+\date{\normalsize December 1, 2020}
 
 \begin{document}
 
@@ -174,10 +174,12 @@ variables, our test statistic is also a Poisson random variable, namely \(Y \sim
 \begin{figure}
     \centering
     \includegraphics[width = 0.45\textwidth]{img/q06-power-function.png}
-    \caption{The power function \(\pi(\theta \,|\, \delta)\).}
+    \quad
+    \includegraphics[width = 0.45\textwidth]{img/q08-power-function.png}
+    \caption{The power functions \(\pi(\theta \,|\, \delta)\) (question 6) and \(\pi(\sigma^2 \,|\, \delta)\) (question 8).}
     \label{q06-power-function}
 \end{figure}
-A graph of \(\pi(\theta\,|\,\delta)\) can be found in Figure \ref{q06-power-function}.
+A graph of \(\pi(\theta\,|\,\delta)\) can be found in the left panel of Figure \ref{q06-power-function}.
 % , where we can see the maximum value occurs as \(\theta \to 0\). 
 The values of \(\pi(\theta\,|\,\delta)\) when \(\theta = \{1/2,1/3,1/4,1/6,1/12\}\) are given by 
 \(0.062, 0.238, 0.423, 0.677, 0.920\), respectively, and have also been marked on Figure \ref{q06-power-function}.
@@ -236,7 +238,7 @@ Therefore, the power function is given by
 \end{align*}
 where \(c\) is chosen to make \(\alpha(\delta) = 0.025\) (or any specified value, for that matter). Again, there is no closed form solution to this function,
 but using \texttt{R} we can find its values, and given a specified value of \(\sigma^2_0\), we will always have \(\pi(\sigma^2_0 \,|\, \delta) = \alpha\)
-as desired. 
+as desired. A plot of \(\pi(\sigma^2 \,|\, \delta)\) can be found in the right panel of Figure \ref{q06-power-function}.
 
 %' ============================================================================================================================================================
 \section{Question 9} \noindent
