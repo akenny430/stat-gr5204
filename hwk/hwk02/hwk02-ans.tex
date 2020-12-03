@@ -394,6 +394,40 @@ With 16 observations, the size of this test is \(\alpha = 0.00926\).
 
 %' ============================================================================================================================================================
 \section{Question 14} \noindent
+Suppose \(X_1, \ldots, X_8\) are randomly sampled from a random variable with density \(f(x \,|\, \theta) = \theta x^{\theta - 1}\), supported for all 
+\(x \in (0,1)\), and we would like to test \(H_0 : \theta \le 1\) against \(H_A : \theta > 1\) using a UMP test \(\delta^*\).
+For two values \(\theta_1,\theta_2\) such that \(\theta_1 < \theta_2\), the ratio of the joint densities (which are also the likelihood
+functions) is 
+\begin{align*}
+    \frac{f(\mathbf{x} \,|\, \theta_2)}{f(\mathbf{x} \,|\, \theta_1)}
+    = \dfrac{\prod_{i=1}^8 \theta_2 x_i^{\theta_2 - 1}}{\prod_{i=1}^8 \theta_1 x_i^{\theta_1 - 1}}
+    = \dfrac{\theta_2^8 \left( \prod_{i=1}^8 x_i \right)^{\theta_2-1}}{\theta_1^8 \left( \prod_{i=1}^8 x_i \right)^{\theta_1-1}}
+    = \left( \frac{\theta_2}{\theta_1} \right)^{8} \cdot \left( \prod_{i=1}^8 x_i \right)^{\theta_2 - \theta_1}.
+\end{align*}
+which is a function of the test statistic \(\prod_{i=1}^8 x_i\). Because \(\theta_2 > \theta_1\), we have \(\theta_2 / \theta_1 > 1\) and \(\theta_2 - \theta_1 > 0\), 
+so the likelihood ratio is monotone and increasing in the parameter \(\prod_{i=1}^8 x_i\). As a result, the UMP test is \(\delta^* :\) reject 
+\(H_0\) if \(\prod_{i=1}^8 x_i \ge c\) for some value of \(c\). For this test, we specify the level of significance as \(\alpha_* = 0.05\), and 
+since \(\pi(\theta \,|\, \delta^*)\) is a monotone increasing function, we have 
+% \(\pi(1 \,|\, \delta^*) = \alpha_*\)
+\begin{align*}
+    \alpha_* 
+    = \sup_{\theta \le 1} \pi(\theta \,|\, \delta^*)
+    = \pi(1 \,|\, \delta^*)
+    \overset{\mathrm{set}}{=} 0.05.
+\end{align*}
+When \(\theta = 1\), we can see from the density function that \(X \sim \mathrm{Unif}(0,1)\), with its cdf given by \(F(X) = X\). 
+% found this result in textbook
+It can be shown, then, that \(-2 \sum_{i=1}^8 \log F(X_i) \sim \chi^2(16)\). Therefore, 
+\begin{align*}
+    \pi(1 \,|\, \delta^*)
+    = \mathrm{Pr}\left( \prod_{i=1}^8 x_i \ge c \,|\, \theta = 1 \right)
+    = \mathrm{Pr} \left( -2 \sum_{i=1}^8 \log X_i \le -2 \log c \right)
+    = C_{16}(-2 \log c)
+    = 0.05
+\end{align*}
+where \(C_{16}(x)\) is the cdf of \(\chi^2(16)\). If \(k \coloneqq -2 \log c\), it follows that \(k = C_{16}^{-1}(0.05) = 7.962\), 
+and as a result, \(\sum_{i=1}^8 \log X_i \ge - k / 2 = 3.981\).
+
 
 
 \end{document}
