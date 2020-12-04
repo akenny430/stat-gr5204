@@ -7,7 +7,11 @@ data <- data.table(
 
 purrr:::map_dbl(data, mean)
 
+sum((data$x - mean(data$x))^2)
 
+sum(
+  (data$y - mean(data$y)) * (data$x - mean(data$x))
+)
 
 # part a ------------------------------------------------------------------
 
