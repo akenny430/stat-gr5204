@@ -37,6 +37,28 @@
 
 %' ============================================================================================================================================================
 \section{Question 1} \noindent
-
+Suppose that \(\bm{X} \overset{\mathrm{iid}}{\sim} \chi^2(\theta)\), where \(\theta \in \mathbb{N}\) is unknown. We would like to test 
+\(H_0 : \theta \le 8\) against \(H_A : \theta > 8\), using a UMP test \(\delta^*\) with a specified significance \(\alpha_* \in (0,1)\). 
+The joint density of \(\bm{X}\) is given by 
+\begin{align*}
+    f(\mathbf{x} \,|\, \theta)
+    = \prod_{i=1}^n \frac{x_i^{\theta / 2 - 1} \mathrm{e}^{-x/2}}{2^{\theta/2} \Gamma(\theta/2)}
+    % = \frac{1}{2^{n\theta/2}\Gamma^n(\theta/2)} \left( \prod_{i=1}^n x_i \right)^{n(\theta/2 - 1)} \cdot \mathrm{exp}\left( -\frac{1}{2} \sum_{i=1}^n x_i \right)
+    = 2^{-n\theta/2} \cdot \Gamma^{-n}(\theta/2) \cdot \left( \prod_{i=1}^n x_i \right)^{n(\theta/2 - 1)} \cdot \mathrm{exp}\left( -\frac{1}{2} \sum_{i=1}^n x_i \right)
+\end{align*}
+To determine \(\delta^*\), we will look at the likelihood ratio. If we have two values \(\theta_1,\theta_2\) such that \(\theta_1 < \theta_2\), then then 
+likelihood ratio is 
+\begin{align*}
+    \frac{f(\mathbf{x} \,|\, \theta_2)}{f(\mathbf{x} \,|\, \theta_1)}
+    &= \dfrac{
+        2^{-n\theta_1/2} \cdot \Gamma^{-n}(\theta_2/2) \cdot \left( \prod_i x_i \right)^{n(\theta_2/2 - 1)} \cdot \mathrm{exp}\left( -\frac{1}{2} \sum_i x_i \right)
+    }{
+        2^{-n\theta_1/2} \cdot \Gamma^{-n}(\theta_1/2) \cdot \left( \prod_i x_i \right)^{n(\theta_1/2 - 1)} \cdot \mathrm{exp}\left( -\frac{1}{2} \sum_i x_i \right)
+    } \\
+    &= 2^{n(\theta_1 - \theta_2)/2} \left( \frac{\Gamma(\theta_1/2)}{\Gamma(\theta_2/2)} \right)^n \left( \prod_{i=1}^n x_i \right)^{n(\theta_2 - \theta_1)/2},
+\end{align*}
+which is a monotone increasing function of the test statistic \(\prod_{i=1}^n x_i\). Therefore, the UMP test is \(\delta^* :\) reject \(H_0\) if 
+\(\prod_{i=1}^n X_i \ge c_*\), where \(c_*\) is chosen such that the test has a significance level \(\alpha_*\). Taking the log of both sides gives us 
+\(\sum_{i=1}^8 \log X_i \ge \log c_* \coloneqq k\). 
 
 \end{document}
