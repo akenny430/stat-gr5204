@@ -77,4 +77,51 @@ pass through the point \((\bar{x}, \bar{y})\).
     \item[(a)] The least-squares coefficients for the model are given by \(\hat{\beta}_0 = 40.9\) and \(\hat{\beta}_1 = 0.548\).
 \end{itemize}
 
+%' ============================================================================================================================================================
+\section{Question 10} \noindent
+Let \((\mathbf{x}, \mathbf{y})\) be the vectors of observations for the predictor \(x\) and the response \(Y\). 
+From the data, we have \(\bar{x} = 2.33\) and \(\bar{y} = 0.81\).
+Here we are assuming that \(Y = \beta_0 + \beta_1 x + \epsilon\), where \(\epsilon \sim \mathrm{N}(0, \sigma^2)\).
+\begin{itemize}
+    \item[(a)] The MLEs for \(\beta_0\), \(\beta_1\), and \(\sigma^2\) are given by 
+    \begin{align*}
+        % \hat{\beta}_{1,\mathrm{MLE}}
+        \hat{\beta}_{1}
+        = \frac{(\mathbf{y} - \bar{y}\mathbf{1})^T(\mathbf{x} - \bar{x}\mathbf{1})}{\| \mathbf{x} - \bar{x}\mathbf{1} \|^2}
+        = 0.685,
+        ~~~
+        % \hat{\beta}_{0,\mathrm{MLE}}
+        \hat{\beta}_0
+        = \bar{y} - \hat{\beta}_1 \bar{x}
+        = -0.786,
+        ~~~\mathrm{and}~~~
+        % \hat{\sigma}^2_{\mathrm{MLE}}
+        \hat{\sigma}^2
+        = \frac{\| \mathbf{y} - \hat{\beta}_0 \mathbf{1} - \hat{\beta}_1 \mathbf{x} \|^2}{n}
+        = 0.938.
+    \end{align*}
+    \item[(b)] The variance of \(\hat{\beta}_0\) and \(\hat{\beta}_1\) is given by 
+    \begin{align*}
+        \mathrm{Var}\big[ \hat{\beta}_1 \big]
+        = \frac{\sigma^2}{\| \mathbf{x} - \bar{x}\mathbf{1} \|^2}
+        = 0.0277 \sigma^2
+        ~~~\mathrm{and}~~~
+        \mathrm{Var}\big[ \hat{\beta}_0 \big]
+        = \sigma^2 \left( \frac{1}{n} + \frac{\bar{x}^2}{\| \mathbf{x} - \bar{x}\mathbf{1} \|^2} \right)
+        = 0.25 \sigma^2.
+    \end{align*}
+    \item[(c)] The covariance between \(\hat{\beta}_0\) and \(\hat{\beta}_1\), and therefore the correltaion, is 
+    \begin{align*}
+        \mathrm{Cov}\big[ \hat{\beta}_0, \hat{\beta}_1 \big]
+        = - \frac{\bar{x} \sigma^2}{\| \mathbf{x} - \bar{x}\mathbf{1} \|^2}
+        = -0.0646 \sigma^2
+        ~~~\mathrm{and}~~~
+        \mathrm{Cor}\big[ \hat{\beta}_0, \hat{\beta}_1 \big] 
+        % = \frac{\mathrm{Cov}\big[ \hat{\beta}_0, \hat{\beta}_1 \big]}{\sqrt{\mathrm{Var}\big[ \hat{\beta}_0 \big]} \cdot \sqrt{\mathrm{Var}\big[ \hat{\beta}_1 \big]}}
+        = \frac{\mathrm{Cov}\big[ \hat{\beta}_0, \hat{\beta}_1 \big]}{\sqrt{\mathrm{Var}\big[ \hat{\beta}_0 \big] \cdot \mathrm{Var}\big[ \hat{\beta}_1 \big]}}
+        % = \frac{-1.5 \sigma^2}{\sqrt{0.0277 \sigma^2} \cdot \sqrt{0.25 \sigma^2}}
+        = -0.775.
+    \end{align*}
+\end{itemize}
+
 \end{document}
