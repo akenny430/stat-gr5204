@@ -39,7 +39,7 @@ coef_var <- function(df) {
   x <- df[[1]]
   barx <- mean(x)
   n <- nrow(df)
-  xnorm <- sum((x - barx)^2)
+  xnorm <- sum((x - barx)^2)re
   b0 <- 1 / xnorm
   b1 <- 1 / n + barx^2 / xnorm
   cov <- - barx / xnorm
