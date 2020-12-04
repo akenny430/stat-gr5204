@@ -62,4 +62,4 @@ ggsave("hwk/hwk03/img/q09-model-plots.png")
 
 
 
-rm(list = ls())
+# rm(list = ls())

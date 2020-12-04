@@ -12,4 +12,4 @@ linear_combo_var(data, 3, -2)
 
 
 
-rm(list = ls())
+# rm(list = ls())

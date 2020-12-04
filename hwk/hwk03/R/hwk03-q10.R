@@ -54,4 +54,4 @@ coef_var(data)
 
 
 
-rm(list = ls())
+# rm(list = ls())
