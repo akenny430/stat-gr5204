@@ -80,7 +80,8 @@ pass through the point \((\bar{x}, \bar{y})\).
 %' ============================================================================================================================================================
 \section{Question 10} \noindent
 Let \((\mathbf{x}, \mathbf{y})\) be the vectors of observations for the predictor \(x\) and the response \(Y\). 
-From the data, we have \(\bar{x} = 2.33\) and \(\bar{y} = 0.81\).
+From the data, we have \(n = 10\), \(\bar{x} = 2.33\), \(\bar{y} = 0.81\), \(\| \mathbf{x} - \bar{x}\mathbf{1} \|^2 = 36.081\), and 
+\((\mathbf{y} - \bar{y}\mathbf{1})^T(\mathbf{x} - \bar{x}\mathbf{1}) = 24.717\).
 Here we are assuming that \(Y = \beta_0 + \beta_1 x + \epsilon\), where \(\epsilon \sim \mathrm{N}(0, \sigma^2)\).
 \begin{itemize}
     \item[(a)] The MLEs for \(\beta_0\), \(\beta_1\), and \(\sigma^2\) are given by 
@@ -149,5 +150,9 @@ Using this linear model, when \(x = 2\), we predict \(\hat{Y} = -0.786 _ 0.685 \
     = \sigma^2 \left( 1 + \frac{1}{n} + \frac{(2 - \bar{x})^2}{\| \mathbf{x} - \bar{x}\mathbf{1} \|^2} \right)
     = 1.103 \sigma^2.
 \end{align*}
+
+%' ============================================================================================================================================================
+\section{Question 13} \noindent
+
 
 \end{document}
