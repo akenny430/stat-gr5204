@@ -28,3 +28,25 @@ get_mle <- function(df) {
 }
 
 get_mle(data)
+
+
+
+# parts b and c -----------------------------------------------------------
+
+
+
+coef_var <- function(df) {
+  x <- df[[1]]
+  barx <- mean(x)
+  n <- nrow(df)
+  xnorm <- sum((x - barx)^2)
+  b0 <- 1 / xnorm
+  b1 <- 1 / n + barx^2 / xnorm
+  cov <- - barx^2 / xnorm
+  coef_pars <- c(b0, b1, cov)
+  coef_pars_sig <- purrr::map_dbl(coef_pars, ~signif(., 3))
+  names(coef_pars_sig) <- c("var(b0)", "var(b1)", "cov(b0,b1)")
+  return(coef_pars_sig)
+}
+
+coef_var(data)
