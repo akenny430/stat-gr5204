@@ -59,3 +59,7 @@ ggplot(data, aes(x, y)) +
   theme_bw(base_size = 30)
 
 ggsave("hwk/hwk03/img/q09-model-plots.png")
+
+
+
+rm(list = ls())

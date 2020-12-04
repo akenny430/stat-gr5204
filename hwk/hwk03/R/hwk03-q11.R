@@ -9,3 +9,7 @@ linear_combo_var <- function(df, a, b) {
 }
 
 linear_combo_var(data, 3, -2)
+
+
+
+rm(list = ls())
