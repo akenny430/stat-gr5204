@@ -140,4 +140,14 @@ with \(\hat{\theta} = 3 \hat{\beta}_0 - 2 \hat{\beta}_1 + 5\). The MSE of \(\hat
     = 10.549 \sigma^2.
 \end{align*}
 
+%' ============================================================================================================================================================
+\section{Question 12} \noindent
+We know that the MLE and least-squares estimates of \(\beta_0\) and \(\beta_1\) are the same, so \(\hat{\beta}_0 = -0.786\) and \(\hat{\beta}_1 = 0.685\).
+Using this linear model, when \(x = 2\), we predict \(\hat{Y} = -0.786 _ 0.685 \cdot 2 = 0.584\). The variance of \(\hat{Y}\) is given by 
+\begin{align*}
+    \mathbb{E} \Big[ (\hat{Y} - Y)^2 \Big]
+    = \sigma^2 \left( 1 + \frac{1}{n} + \frac{(2 - \bar{x})^2}{\| \mathbf{x} - \bar{x}\mathbf{1} \|^2} \right)
+    = 1.103 \sigma^2.
+\end{align*}
+
 \end{document}
