@@ -31,7 +31,7 @@ coef_fit <- list(
   quadratic_fit$coefficients
 )
 
-purrr::map(coef_fit, ~signif(., 3))
+purrr::map(coef_fit, ~round(., 3))
 
 
 
