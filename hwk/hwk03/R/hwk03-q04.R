@@ -23,7 +23,7 @@ test_dist_same <- function(df, alpha = 0.05) {
   qstat <- qchisq(p = alpha, df = (r - 1) * (c - 1), lower.tail = FALSE)
   rejyn <- ifelse(Q >= qstat, "Reject H0", "Don't reject H0")
   return(
-    list(Q = Q, reject = rejyn)
+    list(Q = Q, qa = qstat, reject = rejyn)
   )
 }
 
