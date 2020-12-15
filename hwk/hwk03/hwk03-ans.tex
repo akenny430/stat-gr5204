@@ -66,6 +66,25 @@ which is a monotone increasing function of the test statistic \(\prod_{i=1}^n x_
 
 
 %' ============================================================================================================================================================
+\section{Question 3} \noindent
+From a random sample of \(n\) people, we observe which of the \(k\) different cereal brands that each person prefers. Let \(N_i\) be the number of people who
+prefer the \(i\)th cereal (so \(\sum_i N_i = n\)), and let \(p_i\) be the proportion of people who prefer cereal \(i\). With a significance of \(\alpha\), 
+we would like to test 
+\(H_0: p_1 = \cdots = p_k = 1/k\) against \(H_A:H_0\) is false. To conduct this test we will use the \(\chi^2\) goodness-of-fit test, 
+from which our test statistic is 
+\begin{align*}
+    Q 
+    = \sum_{i = 1}^k \frac{(N_i - n / k)^2}{n / k}
+    = \frac{k}{n} \sum_{i=1}^k \left( N_i^2 - \frac{2 n N_i}{k} + \frac{n^2}{k^2} \right)
+    = \frac{k}{n} \sum_{i=1}^k N_i^2 - n.
+\end{align*}
+% and so \(\sum_i N_i^2 = n(Q + n)/k\). 
+For this test, we reject \(H_0\) when \(Q \ge q_{\alpha}\), where \(q_{\alpha}\) is the \(1 - \alpha\) quantile of the \(\chi^2\) distribution with \(k - 1\)
+degrees of freedom. As a result, we will reject \(H_0\) when \(\sum_i N_i^2 \ge n(q_{\alpha} + n)/k\).
+From the specific example we have \(n = 400\), \(k = 5\), and \(q_{0.01} = 13.273\), so in order to reject \(H_0\), we would need 
+\(\sum_i N_i^2 \ge 33062.136\).
+
+%' ============================================================================================================================================================
 \section{Question 8} \noindent
 By definition, the least-squares estimate for the intercept is \(\hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}\).
 Rearranging gives us \(\bar{y} = \hat{\beta}_0 + \hat{\beta}_1 \bar{x}\), and so the least-squares line \(y = \hat{\beta}_0 + \hat{\beta}_1 x\) will always 
