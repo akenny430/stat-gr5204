@@ -106,6 +106,23 @@ Using \texttt{R}, I found that \(Q = 6.829\) and \(q_{0.1} = 10.645\), so we wou
 seem to be the same for each of the three groups. 
 
 %' ============================================================================================================================================================
+\section{Question 5} \noindent
+
+
+%' ============================================================================================================================================================
+\section{Question 6} \noindent
+For this question, for all \(i,j = \{1,2\}\) we have \(N_{i*} = N_{*j} = 2n\) and \(\hat{E}_{ij} = 2n \cdot 2n / 4n = n\), and so the test statistic for the 
+\(\chi^2\) test of independence is 
+\begin{align*}
+    Q
+    = \sum_{i=1}^2 \sum_{j=1}^2 \frac{(N_{ij} - \hat{E}_{ij})^2}{\hat{E}_{ij}}
+    = \frac{4 a^2}{n}.
+\end{align*}
+We reject \(H_0\) if \(Q \ge q_{\alpha}\), where \(q_{\alpha}\) is the \(1 - \alpha\) quantile of the \(\chi^2\) distribution with 
+\(1\) degree of freedom, and so we would reject \(H_0\) when \(a \ge \sqrt{n q_{\alpha}} / 2\) or \(a \le - \sqrt{n q_{\alpha}} / 2\).
+When \(\alpha = 0.01\), we have \(q_{0.01} = 6.635\).
+
+%' ============================================================================================================================================================
 \section{Question 8} \noindent
 By definition, the least-squares estimate for the intercept is \(\hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}\).
 Rearranging gives us \(\bar{y} = \hat{\beta}_0 + \hat{\beta}_1 \bar{x}\), and so the least-squares line \(y = \hat{\beta}_0 + \hat{\beta}_1 x\) will always 
