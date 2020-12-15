@@ -85,6 +85,27 @@ From the specific example we have \(n = 400\), \(k = 5\), and \(q_{0.01} = 13.27
 \(\sum_i N_i^2 \ge 33062.136\).
 
 %' ============================================================================================================================================================
+\section{Question 4} \noindent
+With significance \(\alpha\), we are testing whether or not each of the \(r\) groups have the same proportion for each of the \(c\) bloodtypes, that is, we 
+are testing \(H_0: p_{1_j} = \cdots, = p_{r_j}\) for all \(j = \{1, \ldots, c\}\) against \(H_A : H_0\) is false (in this example, we have \(2 \le c \le 4\)). 
+There are \(n\) total observations in the data broken down as follows: \(N_{ij}\) is the observation in the \(i\)th group and \(j\)th blood type, 
+\(N_{i*}\) is the number of observations in the \(i\)th group across all \(c\) bloodtypes, and \(N_{*j}\) is the number of observations in the 
+\(j\)th bloodtype across all \(r\) groups. 
+Using the \(\chi^2\) test for homogenity, our test statistic is 
+\begin{align*}
+    Q
+    = \sum_{i=1}^r \sum_{j=1}^c \frac{(N_{ij} - \hat{E}_{ij})^2}{\hat{E}_{ij}},
+    ~~\text{where}~~
+    \hat{E}_{ij} = \frac{N_{i*} \cdot N_{*j}}{n}.
+\end{align*}
+We would the reject \(H_0\) when \(Q \ge q_{\alpha}\), where \(q_{\alpha}\) is the \(1 - \alpha\) quantile of the \(\chi^2\) distribution with 
+\((r - 1)(c - 1)\) degrees of freedom. For this example, the contingency table is given to us, where we have \(r = 3\), \(c = 4\), and we want 
+to use a significance level of \(\alpha = 0.1\).
+Calculating the rest of the necessary values to obtain \(Q\) by hand is tediuos and will not be written here. 
+Using \texttt{R}, I found that \(Q = 6.829\) and \(q_{0.1} = 10.645\), so we would not reject \(H_0\). That is, the proportion of the four blood types 
+seem to be the same for each of the three groups. 
+
+%' ============================================================================================================================================================
 \section{Question 8} \noindent
 By definition, the least-squares estimate for the intercept is \(\hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}\).
 Rearranging gives us \(\bar{y} = \hat{\beta}_0 + \hat{\beta}_1 \bar{x}\), and so the least-squares line \(y = \hat{\beta}_0 + \hat{\beta}_1 x\) will always 
