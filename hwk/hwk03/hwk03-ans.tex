@@ -107,7 +107,13 @@ seem to be the same for each of the three groups.
 
 %' ============================================================================================================================================================
 \section{Question 5} \noindent
-
+When we manipulate a conjugacy table such that the row totals and column totals are the same, we are keeping \(N_{i*}\) and \(N_{*j}\) the same for all 
+\(i,j\), and so \(\hat{E}_{ij}\) will remain the same as well. Therefore, when looking at the formula for \(Q\), we can increase its value by making each 
+\(N_{ij}\) farther away from \(\hat{E}_{ij}\). Considering two groups \(i,k\) and two blood types \(j,\ell\), we can alter the value of \(Q\) as follows:
+\(N_{ij} \leftarrow N_{ij} - \epsilon\), \(N_{i\ell} \leftarrow N_{i\ell} + \epsilon\), \(N_{kj} \leftarrow N_{kj} + \epsilon\), and 
+\(N_{k\ell} \leftarrow N_{k\ell} - \epsilon\), where \(\epsilon\) is some number. As a more concrete example, from the contingency table given to us we have 
+\(N_{12} = 6\), \(N_{13} = 5\), \(N_{22} = 24\), and \(N_{23} = 7\), and by having \(\epsilon = 1\), the new values become
+\(N_{12} = 5\), \(N_{13} = 6\), \(N_{22} = 25\), and \(N_{23} = 6\). Using these alternate values give \(Q = 8.983\). 
 
 %' ============================================================================================================================================================
 \section{Question 6} \noindent
